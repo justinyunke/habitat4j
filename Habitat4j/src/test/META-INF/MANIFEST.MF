@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.6.0
+Created-By: 1.4.2_04-b05 (Sun Microsystems Inc.)
+Package: org.productivity.java.habitat4j
+Extension-Name: habitat4j
+Specification-Title: Habitat4J
+Specification-Version: 1.0.0rc18
+Specification-Version-Detail: 1.0.0 Release Candidate 18
+Specification-Vendor: Productivity.ORG
+Specification-Vendor-Id: http://www.productivity.org/projects/habitat4j/
+Implementation-Title: Habitat4J
+Implementation-Version: 1.0.0rc18
+Implementation-Version-Detail: 1.0.0 Release Candidate 18
+Implementation-Vendor: Productivity.ORG
+Implementation-Vendor-Id: http://www.productivity.org/projects/habitat
+ 4j/
+

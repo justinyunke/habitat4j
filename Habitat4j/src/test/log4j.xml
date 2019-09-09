@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false">
+   <appender name="Habitat4JConsole" class="org.apache.log4j.ConsoleAppender">
+      <param name="Target" value="System.out"/>
+      <param name="Threshold" value="DEBUG"/>
+
+      <layout class="org.apache.log4j.PatternLayout">
+         <param name="ConversionPattern" value="%d{ABSOLUTE} %-5p [%c{1}] %m%n"/>
+      </layout>
+   </appender>
+
+   <appender name="Habitat4JAppender" class="org.apache.log4j.AsyncAppender">
+     <appender-ref ref="Habitat4JConsole"/>
+   </appender>
+
+   <category name="org.productivity.java.habitat4j">
+     <priority value="INFO" />
+     <appender-ref ref="Habitat4JAppender"/>
+   </category>
+</log4j:configuration>

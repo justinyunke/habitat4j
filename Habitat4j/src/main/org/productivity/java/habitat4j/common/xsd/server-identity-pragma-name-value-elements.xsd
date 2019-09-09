@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!-- 
+ Habitat4J Version: $Id: server-identity-pragma-name-value-elements.xsd,v 1.2 2004/08/06 06:12:32 cvs Exp $
+
+ ## LICENSE INFORMATION ##
+ 
+ This library is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Lesser General Public
+ License as published by the Free Software Foundation; either
+ version 2.1 of the License, or (at your option) any later version.
+ 
+ This library is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Lesser General Public License for more details.
+ 
+ You should have received a copy of the GNU Lesser General Public
+ License along with this library; if not, write to the Free Software
+ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 
+ USA
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+ <xs:element name="server-identity">
+  <xs:complexType>
+   <xs:sequence>
+    <xs:element name="application" maxOccurs="unbounded">
+     <xs:complexType>
+      <xs:sequence>
+       <xs:element name="environment" type="xs:string" minOccurs="0" maxOccurs="1"/>
+       <xs:element name="instance" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+         <xs:sequence>
+          <xs:element name="name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="enumeration" type="xs:string" minOccurs="0" maxOccurs="1"/>       
+         </xs:sequence>
+        </xs:complexType>
+       </xs:element>
+       <xs:element name="roles" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+         <xs:sequence>
+          <xs:element name="role" minOccurs="1" maxOccurs="unbounded">
+           <xs:complexType>
+            <xs:sequence>
+             <xs:element name="type" type="xs:string" minOccurs="0" maxOccurs="1"/>
+             <xs:element name="vendor" type="xs:string" minOccurs="0" maxOccurs="1"/>
+             <xs:element name="product" type="xs:string" minOccurs="0" maxOccurs="1"/>
+             <xs:element name="version" type="xs:string" minOccurs="0" maxOccurs="1"/>
+             <xs:element name="patch-level" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            </xs:sequence>
+            <xs:attribute name="name" type="xs:string"/>
+           </xs:complexType>         
+          </xs:element>
+         </xs:sequence>
+        </xs:complexType>
+       </xs:element>
+       <xs:element name="pragma" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+         <xs:sequence>
+          <xs:element name="name" minOccurs="1" maxOccurs="1"/>
+          <xs:element name="value" minOccurs="1" maxOccurs="1"/>
+         </xs:sequence>
+        </xs:complexType>
+       </xs:element>
+      </xs:sequence>
+      <xs:attribute name="name" type="xs:string"/>
+     </xs:complexType> 
+    </xs:element>
+   </xs:sequence>
+   <xs:attribute name="version" type="xs:string" use="optional"/>
+   <xs:attribute name="modifiedBy" type="xs:string" use="optional"/>
+  </xs:complexType>    
+ </xs:element>  
+</xs:schema>

@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<property-list name="ldap">
+  <definitions>
+    <property-bean id="ldap" class="org.productivity.java.habitat4j.junit.examples.propertybean.SampleLDAPBean"/>
+    <decryptor id="caesar" class="org.productivity.java.habitat4j.junit.examples.decryptor.SampleCaesarEncryptorDecryptor"/>
+  </definitions>
+	
+  <context>
+    <property-bean id="ldap" name="login.ldap.server">
+      <host>ldap-dev-1.bogus.productivity.org</host>
+      <port>389</port>
+      <service>ldap</service>
+      <baseDN>o=habitat4j.org,ou=dev</baseDN>
+    </property-bean>
+  </context>
+
+  <context environment="Dev" workstationUser="jxsmith">
+    <property name="testOfPragmaSubstitution">${pragma:substitutionTestStart}usertwice=${pragma:workstationUser}${pragma:workstationUser} test=${pragma:substitutionTestEnd}</property>
+    <property-bean id="ldap" name="login.ldap.server" instance="revise">
+      <authUser>jxsmith</authUser>
+      <authPass decryptorId="caesar">uftuqbttxpse</authPass>
+    </property-bean>
+  </context>
+  
+  <context environment="Unit">
+    <property-bean id="ldap" name="login.ldap.server" instance="revise">
+      <host>ldap-unit-0.bogus.productivity.org</host>
+      <baseDN>o=habitat4j.org,ou=unit</baseDN>
+      <authUser>unitacct</authUser>
+      <authPass decryptorId="caesar">vojuqbtt</authPass>
+    </property-bean>
+  </context>
+
+  <context environment="Production">
+    <property-bean id="ldap" name="login.ldap.server" instance="revise">
+      <port>646</port>
+      <service>ldaps</service>
+      <baseDN>o=habitat4j.org,ou=production</baseDN>
+    </property-bean>
+  </context>
+
+  <context environment="Production" instanceEnumeration="1">
+    <property-bean id="ldap" name="login.ldap.server" instance="revise">
+      <host>ldap-prod-1.bogus.productivity.org</host>
+      <authUser>prodacct1</authUser>
+      <authPass decryptorId="caesar">qspeqbtt2</authPass>
+    </property-bean>
+  </context>
+
+  <context environment="Production" instanceEnumeration="2">
+    <property-bean id="ldap" name="login.ldap.server" instance="revise">
+      <host>ldap-prod-2.bogus.productivity.org</host>
+      <authUser>prodacct2</authUser>
+      <authPass decryptorId="caesar">qspeqbtt3</authPass>
+    </property-bean>
+  </context>
+
+  <context environment="Production" instanceEnumeration="3">
+    <property-bean id="ldap" name="login.ldap.server" instance="revise">
+      <host>ldap-prod-3.bogus.productivity.org</host>
+      <authUser>prodacct3</authUser>
+      <authPass decryptorId="caesar">qspeqbtt4</authPass>
+    </property-bean>
+  </context>
+  
+  <context workstationUser="jxsmith">
+  	<property name="test.context.not.in.server.identity">true</property>
+  </context>
+  
+  <context instanceOS="windows">
+  	<property name="detectedOS">windows</property>
+  </context>
+
+  <context instanceOS="unix">
+  	<property name="detectedOS">unix</property>
+  </context>
+
+  <context instanceOS="other">
+  	<property name="detectedOS">other</property>
+  </context>
+</property-list>

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!-- 
+ Habitat4J Version: $Id: property-list.xsd,v 1.16 2006/07/08 21:19:22 cvs Exp $
+
+ ## LICENSE INFORMATION ##
+ 
+ This library is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Lesser General Public
+ License as published by the Free Software Foundation; either
+ version 2.1 of the License, or (at your option) any later version.
+ 
+ This library is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Lesser General Public License for more details.
+ 
+ You should have received a copy of the GNU Lesser General Public
+ License along with this library; if not, write to the Free Software
+ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 
+ USA
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+ <xs:element name="property-list">
+  <xs:complexType>
+   <xs:sequence>
+    <xs:element name="definitions" minOccurs="0" maxOccurs="unbounded">
+     <xs:complexType>
+      <xs:sequence>
+       <xs:element name="property-bean" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+         <xs:attribute name="id" use="required"/>
+         <xs:attribute name="class" use="required"/>
+         <xs:attribute name="copyMethod" use="optional"/>
+        </xs:complexType>         	
+       </xs:element>
+       <xs:element name="decoder" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+         <xs:attribute name="id" use="required"/>
+         <xs:attribute name="class" use="required"/>
+         <xs:attribute name="alwaysNewInstance"/>
+        </xs:complexType>         	
+       </xs:element>
+       <xs:element name="decryptor" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+         <xs:attribute name="id" use="required"/>
+         <xs:attribute name="class" use="required"/>
+         <xs:attribute name="alwaysNewInstance"/>
+        </xs:complexType>         	
+       </xs:element>
+       <xs:element name="reload-event-handler" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+         <xs:attribute name="class" use="required"/>
+         <xs:attribute name="alwaysNewInstance"/>
+        </xs:complexType>         	
+       </xs:element>
+       <xs:element name="pragma" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+         <xs:simpleContent>
+          <xs:extension base="xs:string">
+           <xs:attribute name="name" type="xs:string" use="required"/>
+          </xs:extension>
+         </xs:simpleContent>
+        </xs:complexType>
+       </xs:element>
+      </xs:sequence>
+      <xs:attribute name="package" type="xs:string" use="optional"/>
+     </xs:complexType>
+    </xs:element>
+    <xs:element name="context" minOccurs="0" maxOccurs="unbounded">
+     <xs:complexType>
+      <xs:sequence>
+       <xs:element name="property" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+         <xs:simpleContent>
+          <xs:extension base="xs:string">
+           <xs:attribute name="name" type="xs:string" use="required"/>
+           <xs:attribute name="decoderId" type="xs:string" use="optional"/>
+           <xs:attribute name="decryptorId" type="xs:string" use="optional"/>
+          </xs:extension>
+         </xs:simpleContent>
+        </xs:complexType>
+       </xs:element>
+       <xs:element name="property-array" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+         <xs:sequence>
+          <xs:element name="item" minOccurs="0" maxOccurs="unbounded">
+           <xs:complexType>
+            <xs:simpleContent>
+             <xs:extension base="xs:string">
+              <xs:attribute name="decoderId" type="xs:string" use="optional"/>
+              <xs:attribute name="decryptorId" type="xs:string" use="optional"/>
+             </xs:extension>
+            </xs:simpleContent>
+           </xs:complexType>
+          </xs:element>
+         </xs:sequence>
+         <xs:attribute name="name" type="xs:string" use="required"/>
+         <xs:attribute name="instance" type="xs:string"/>
+        </xs:complexType>
+       </xs:element>
+       <xs:element name="property-hash" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+         <xs:sequence>
+          <xs:element name="item" minOccurs="0" maxOccurs="unbounded">
+           <xs:complexType>
+            <xs:simpleContent>
+             <xs:extension base="xs:string">
+              <xs:attribute name="key" type="xs:string" use="required"/>
+              <xs:attribute name="decoderId" type="xs:string" use="optional"/>
+              <xs:attribute name="decryptorId" type="xs:string" use="optional"/>
+             </xs:extension>
+            </xs:simpleContent>
+           </xs:complexType>
+          </xs:element>
+         </xs:sequence>
+         <xs:attribute name="name" type="xs:string" use="required"/>
+         <xs:attribute name="instance" type="xs:string"/>
+        </xs:complexType>
+       </xs:element>
+       <xs:element name="property-bean" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+         <xs:sequence>
+          <xs:any minOccurs="0" maxOccurs="unbounded" processContents="skip"/>
+         </xs:sequence>
+         <xs:attribute name="name" type="xs:string" use="required"/>
+         <xs:attribute name="id" type="xs:string" use="required"/>
+         <xs:attribute name="instance" type="xs:string"/>
+        </xs:complexType>
+       </xs:element>
+       <xs:element name="property-bean-array" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+         <xs:sequence>
+          <xs:element name="item" minOccurs="0" maxOccurs="unbounded">
+           <xs:complexType>
+            <xs:sequence>
+             <xs:any minOccurs="0" maxOccurs="unbounded" processContents="skip"/>
+            </xs:sequence>
+           </xs:complexType>
+          </xs:element>
+         </xs:sequence>
+         <xs:attribute name="name" type="xs:string" use="required"/>
+         <xs:attribute name="id" type="xs:string" use="required"/>
+         <xs:attribute name="instance" type="xs:string"/>
+        </xs:complexType>
+       </xs:element>
+       <xs:element name="property-bean-hash" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+         <xs:sequence>
+          <xs:element name="item" minOccurs="0" maxOccurs="unbounded">
+           <xs:complexType>
+            <xs:sequence>
+             <xs:any minOccurs="0" maxOccurs="unbounded" processContents="skip"/>
+            </xs:sequence>
+            <xs:attribute name="key" type="xs:string" use="required"/>
+           </xs:complexType>
+          </xs:element>
+         </xs:sequence>
+         <xs:attribute name="name" type="xs:string" use="required"/>
+         <xs:attribute name="id" type="xs:string" use="required"/>
+         <xs:attribute name="instance" type="xs:string"/>
+        </xs:complexType>
+       </xs:element>
+       <xs:element name="system-property" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+         <xs:simpleContent>
+          <xs:extension base="xs:string">
+           <xs:attribute name="name" type="xs:string" use="required"/>
+           <xs:attribute name="decoderId" type="xs:string" use="optional"/>
+           <xs:attribute name="decryptorId" type="xs:string" use="optional"/>
+          </xs:extension>
+         </xs:simpleContent>
+        </xs:complexType>
+       </xs:element>
+       <xs:element name="security-property" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+         <xs:simpleContent>
+          <xs:extension base="xs:string">
+           <xs:attribute name="name" type="xs:string" use="required"/>
+           <xs:attribute name="decoderId" type="xs:string" use="optional"/>
+           <xs:attribute name="decryptorId" type="xs:string" use="optional"/>
+          </xs:extension>
+         </xs:simpleContent>
+        </xs:complexType>
+       </xs:element>
+      </xs:sequence>
+      <xs:anyAttribute processContents="skip"/>
+     </xs:complexType>
+    </xs:element>
+   </xs:sequence>
+   <xs:attribute name="name" type="xs:string" use="optional"/>
+   <xs:attribute name="version" type="xs:string" use="optional"/>
+   <xs:attribute name="reloadSerial" type="xs:int" use="optional"/>
+   <xs:attribute name="modifiedBy" type="xs:string" use="optional"/>
+  </xs:complexType>    
+ </xs:element>  
+</xs:schema>

@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<property-list>
+  <definitions package="org.productivity.java.habitat4j.junit.examples.propertybean">
+    <property-bean id="ept" class="EveryParameterTypeBean"/>
+  </definitions>
+	
+  <context>
+    <property-bean name="ldap.server.local" id="cpb">
+      <host>127.0.0.1</host>
+      <port>389</port>
+      <service>ldap</service>
+    </property-bean>
+
+    <property-bean-array name="internal.smtp.servers" id="cpb">
+      <item>
+        <host>10.0.0.1</host>
+        <port>25</port>
+        <service>smtp</service>
+      </item>
+      <item>
+        <host>10.0.0.2</host>
+        <port>25</port>
+        <service>smtp</service>
+      </item>
+    </property-bean-array>
+  </context>
+
+  <context>
+    <property-bean name="every.parameter.1" id="ept">
+      <shortValue>1</shortValue>
+      <intValue>2</intValue>
+      <longValue>3</longValue>
+      <doubleValue>4.01</doubleValue>
+      <floatValue>5</floatValue>
+      <charValue>a</charValue>
+      <booleanValue>true</booleanValue>
+      <shortObjectValue>6</shortObjectValue>
+      <intObjectValue>7</intObjectValue>
+      <bigIntegerObjectValue>8</bigIntegerObjectValue>
+      <longObjectValue>9</longObjectValue>
+      <doubleObjectValue>10.01</doubleObjectValue>
+      <floatObjectValue>11</floatObjectValue>
+      <bigDecimalObjectValue>12.01</bigDecimalObjectValue>
+      <charObjectValue>b</charObjectValue>
+      <booleanObjectValue>true</booleanObjectValue>
+      <stringValue>abc</stringValue>
+    </property-bean>
+
+    <property-bean name="every.parameter.2" id="ept">
+      <shortValue>-1</shortValue>
+      <intValue>-2</intValue>
+      <longValue>-3</longValue>
+      <doubleValue>-4.01</doubleValue>
+      <floatValue>-5</floatValue>
+      <charValue>c</charValue>
+      <booleanValue>false</booleanValue>
+      <shortObjectValue>-6</shortObjectValue>
+      <intObjectValue>-7</intObjectValue>
+      <bigIntegerObjectValue>-8</bigIntegerObjectValue>
+      <longObjectValue>-9</longObjectValue>
+      <doubleObjectValue>-10.01</doubleObjectValue>
+      <floatObjectValue>-11</floatObjectValue>
+      <bigDecimalObjectValue>-12.01</bigDecimalObjectValue>
+      <charObjectValue>d</charObjectValue>
+      <booleanObjectValue>false</booleanObjectValue>
+      <stringValue>cba</stringValue>
+    </property-bean>
+
+    <property-bean name="every.parameter.null" id="ept">
+      <shortValue></shortValue>
+      <intValue></intValue>
+      <longValue></longValue>
+      <doubleValue></doubleValue>
+      <floatValue></floatValue>
+      <charValue></charValue>
+      <booleanValue></booleanValue>
+      <shortObjectValue></shortObjectValue>
+      <intObjectValue></intObjectValue>
+      <bigIntegerObjectValue></bigIntegerObjectValue>
+      <longObjectValue></longObjectValue>
+      <doubleObjectValue></doubleObjectValue>
+      <floatObjectValue></floatObjectValue>
+      <bigDecimalObjectValue></bigDecimalObjectValue>
+      <charObjectValue></charObjectValue>
+      <booleanObjectValue></booleanObjectValue>
+      <stringValue></stringValue>
+    </property-bean>
+  </context>  
+</property-list>
