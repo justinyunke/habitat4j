@@ -1,16 +1,16 @@
---------------------------------------------------------------------------
-Document: CHANGELOG.TXT
-Version:  $Id: CHANGELOG.TXT,v 1.82 2007/03/09 22:44:01 cvs Exp $
-Author:   Justin Yunke <habitat4j@productivity.org>
-URL:      http://www.productivity.org/projects/habitat4j/
---------------------------------------------------------------------------
-2007-03-09 [1.0.0rc18] jpy
+# 2019-09-10 [1.0.0] jpy
+- Moved to Github productivityorg/habitat4j with Maven build setup.
+
+# 200?-??-?? [1.0.0rc19] jpy
+- No idea when this version was released.  It's been a while. :)
+
+# 2007-03-09 [1.0.0rc18] jpy
 - Corrected a bug in PropertyList.isPropertyABean() to avoid a Null-
   PointerException when globalPropertyBeanDefinitions are defined but
   there are no propertyBeanDefinitions.  Method now checks both
   Hashtables.
---------------------------------------------------------------------------
-2007-02-25 [1.0.0rc17] jpy
+  
+# 2007-02-25 [1.0.0rc17] jpy
 - Viva Habitat4J Release Candidate 17!  :)
 - Added add/remove/clearReloadablePropertyList(s) methods to
   AbstractPropertyListManager and PropertyListManager to control what
@@ -30,16 +30,16 @@ URL:      http://www.productivity.org/projects/habitat4j/
   feature.
 - Added getReloadEventHandler() and hasReloadEventHandler() methods to
   PropertyList.
---------------------------------------------------------------------------
-2006-08-16 [1.0.0rc16] jpy
+  
+# 2006-08-16 [1.0.0rc16] jpy
 - Viva Habitat4J Release Candidate 16!  :)
 - Added "instanceOS" fixed parameter to ServerIdentity, which contains
   one of three values:  "windows", "unix", or "other".  The information
   is obtained via the InstanceOsHelper, which uses the System
   properties "os.name" value to detect the operating system under which
   the JVM is running.
---------------------------------------------------------------------------
-2006-07-08 [1.0.0rc15] jpy
+  
+# 2006-07-08 [1.0.0rc15] jpy
 - Viva Habitat4J Release Candidate 15!  :)
 - Modified Habitat4JBootstrapServletContextListener to work with
   JDK 1.3- by putting a toString() on a rethrown Exception.
@@ -59,16 +59,16 @@ URL:      http://www.productivity.org/projects/habitat4j/
   If this attribute is left out, reflection is used by default.
   The property-list.xsd (and alternate property-list) schemas have been
   modified with the new copyMethod attribute.
---------------------------------------------------------------------------
-2006-03-15 [1.0.0rc14] jpy
+  
+# 2006-03-15 [1.0.0rc14] jpy
 - Viva Habitat4J Release Candidate 14!  :)
 - Refactored PropertyList.toString() to use multi-line output for
   large property definitions, such as those with many array or hash
   entries.
 - Refactored System and Security properties to not log an "error"
   when setting a property value matching what's already set.
---------------------------------------------------------------------------
-2006-02-14 [1.0.0rc13] jpy
+
+# 2006-02-14 [1.0.0rc13] jpy
 - Viva Habitat4J Release Candidate 13!  :)
 - Added two wildcard capabilities to context parameters:
   <context parameter="*"> .. </context>
@@ -80,8 +80,8 @@ URL:      http://www.productivity.org/projects/habitat4j/
 - Added PROPERTY_LIST_FEATURE_SUPPRESS_PROPERTY_BEAN_COPY_WARNINGS
   feature to suppress WARN logging that occurs when PropertyBeans
   cannot be copied entirely.
---------------------------------------------------------------------------
-2006-01-25 [1.0.0rc12] jpy
+
+# 2006-01-25 [1.0.0rc12] jpy
 - Viva Habitat4J Release Candidate 12!  :)
 - In AbstractBaseHandler, added secondary attempt to instantiate the
   XMLReader if XMLReaderFactory.createXMLReader(..) throws an
@@ -93,8 +93,8 @@ URL:      http://www.productivity.org/projects/habitat4j/
   definitions.  The PROPERTY_LIST_FEATURE_SERVER_IDENTITY_PRAGMA_OVERRIDE
   feature needs to be set to allow PropertyList pragma definitions
   to override ServerIdentity pragma definitions.
---------------------------------------------------------------------------
-2005-11-15 [1.0.0rc11] jpy
+
+# 2005-11-15 [1.0.0rc11] jpy
 - Viva Habitat4J Release Candidate 11!  :)
 - Bug Fix:  The <property-array> element had issues with mixed
   contexts.  Fix involved checking for "current context" more often.
@@ -104,8 +104,8 @@ URL:      http://www.productivity.org/projects/habitat4j/
   Habitat4JBootstrap, which creates a semicolon-delimited path for
   server-identity files that may appear in different locations on
   different systems.
---------------------------------------------------------------------------
-2005-10-06 [1.0.0rc10] jpy
+
+# 2005-10-06 [1.0.0rc10] jpy
 - Viva Habitat4J Release Candidate 10!  :)
 - Bug Fix:  The <context> "prefix" attribute was handled incorrectly.
   Anyone using relatively complex <context> sections using (a) the
@@ -117,8 +117,8 @@ URL:      http://www.productivity.org/projects/habitat4j/
   "has" method corresponding to the "get"/"set" methods, the field will be
   copied by default.  Useful if you wish to avoid copying a field within a
   PropertyBean when using the *Copy property-retrieval methods.
---------------------------------------------------------------------------
-2005-10-05 [1.0.0rc9] jpy
+  
+# 2005-10-05 [1.0.0rc9] jpy
 - Viva Habitat4J Release Candidate 9!  :)
 - Bug Fix:  Replaced use of StringBuffer.indexOf(..) introduced in
   1.0.0rc5.  All previous versions since 1.0.0rc5 (inclusive) will not
@@ -138,8 +138,8 @@ URL:      http://www.productivity.org/projects/habitat4j/
   found, reporting that the interface class "Object" was not implemented.
   This is related to removing the PropertyBeanIF class in 1.0.0rc8,
   and is only aesthetic.
---------------------------------------------------------------------------
-2005-09-20 [1.0.0rc8] jpy
+  
+# 2005-09-20 [1.0.0rc8] jpy
 - Viva Habitat4J Release Candidate 8!  :)
 - -- MAJOR CHANGE FOR PROPERTYBEAN USERS --
   After some consideration and a brief discussion with some users of
@@ -155,8 +155,8 @@ URL:      http://www.productivity.org/projects/habitat4j/
   in sorted order.  PropertyHash and PropertyBeanHash properties now
   have their elements sorted by their keys, as well.  [Suggestion and
   code example provided by an anonymous Habitat4J user -- thanks!]
---------------------------------------------------------------------------
-2005-09-13 [1.0.0rc7] jpy
+
+# 2005-09-13 [1.0.0rc7] jpy
 - Viva Habitat4J Release Candidate 7!  :)
 - Improved *Copy code for PropertyBeanIF implementations.  Added these
   three feature configurations, defaults shown in parentheses:
@@ -175,8 +175,8 @@ URL:      http://www.productivity.org/projects/habitat4j/
   affect code if the static constant references weren't used in an
   application that uses Habitat4J.
 - Cleaned up some comments.
---------------------------------------------------------------------------
-2005-09-10 [1.0.0rc6] jpy
+
+# 2005-09-10 [1.0.0rc6] jpy
 - Viva Habitat4J Release Candidate 6!  :)
 - Starting to find obscure bugs relating to Object manipulation within
   Habitat4J, as shown below:
@@ -215,8 +215,8 @@ URL:      http://www.productivity.org/projects/habitat4j/
   probably best to keep PropertyBeanIF implementations as simple as
   the application allows.
 - Improved logging relating to PropertyBeanIF copying logic.
---------------------------------------------------------------------------
-2005-09-06 [1.0.0rc5] jpy
+
+# 2005-09-06 [1.0.0rc5] jpy
 - Viva Habitat4J Release Candidate 5!  :)
 - Bug fix:  PropertyArray's instance attribute had no effect prior
   to this version.  JUnit test added to verify.
@@ -249,8 +249,8 @@ URL:      http://www.productivity.org/projects/habitat4j/
   pragma definition is not available, an empty space is substituted.
 - Minor clean-ups, including moving some hardcoded statics into
   Habitat4JConstants and some JavaDoc clean-up.
---------------------------------------------------------------------------
-2005-08-25 [1.0.0rc4] jpy
+
+# 2005-08-25 [1.0.0rc4] jpy
 - Viva Habitat4J Release Candidate 4!  :)
 - Added support to Habitat4JBootstrap via ApplicationPropertyListLoader
   to load files placed into a heirarchy, so properties can be organized
@@ -268,8 +268,8 @@ URL:      http://www.productivity.org/projects/habitat4j/
 - Fixed a bad manifest entry in the habitat4jweb jar provided in
   Habitat4J 1.0.0rc3. Cleaned up other manifest entries.
 - Minor documentation and logging fixes.
---------------------------------------------------------------------------
-2005-03-29 [1.0.0rc3] jpy
+
+# 2005-03-29 [1.0.0rc3] jpy
 - Viva Habitat4J Release Candidate 3!  :)
 - BUG FIX - DecoderIF/DecryptorIF - now calls initialize() method
   for both modes specified by alwaysNewInstance.  Prior to this fix,
@@ -293,8 +293,8 @@ URL:      http://www.productivity.org/projects/habitat4j/
   boolean value is named "isXX()" instead of "getXX()."
 - Turned on more of the Java compiler error/warnings in Eclipse and
   removed some extraneous code based on its recommendations.
---------------------------------------------------------------------------
-2005-03-24 [1.0.0rc2] jpy
+
+# 2005-03-24 [1.0.0rc2] jpy
 - Viva Habitat4J Release Candidate 2!  :)
 - Modified Habitat4JBootstrap so it can be passed a Map of bootstrap
   parameters.  Modified Habitat4JBootstrapServlet to simply wrap the new
@@ -307,8 +307,8 @@ URL:      http://www.productivity.org/projects/habitat4j/
   remove any trailing slashes (but still allow a "root" path).
 - Fixed small typo in AbstractServerIdentityManager that caused an
   Exception if "mode" is given a null value.
---------------------------------------------------------------------------
-2005-03-23 [1.0.0rc1] jpy
+
+# 2005-03-23 [1.0.0rc1] jpy
 - Viva Habitat4J Release Candidate 1!  :)
 - Added ServerIdentityManager.setPragmaDefinition(..) in order to be
   able to tweak pragma definitions during a bootstrap process.  Also
@@ -336,15 +336,15 @@ URL:      http://www.productivity.org/projects/habitat4j/
   by Eclipse.
 - Added serialVersionUID private static final long variables to all
   Serializable implementations based on recommendation by Eclipse.
---------------------------------------------------------------------------
-2004-11-16 [0.9.28] jpy
+
+# 2004-11-16 [0.9.28] jpy
 - Added ServerIdentityFileNotFoundException.
 - Added check to ensure ServerIdentity cannot be loaded more than once
   unless the SERVER_IDENTITY_FEATURE_CAN_BE_RELOADED Habitat4JFeature
   is set to a boolean true value.
 - Added reset() method to ServerIdentity.
---------------------------------------------------------------------------
-2004-11-11 [0.9.27] jpy
+
+# 2004-11-11 [0.9.27] jpy
 - Added Bootstrap initializer classes:  Habitat4JBootstrap and
   the J2EE HttpServlet wrapper Habitat4JBootstrapServlet.  Also
   added Habitat4JBootstrapException.
@@ -366,8 +366,8 @@ URL:      http://www.productivity.org/projects/habitat4j/
   Habitat4J.
 - Fixed path in doc\Habitat4J\util\sivalidate.bat ServerIdentity XML
   file validator and removed the dependency on log4j.
---------------------------------------------------------------------------
-2004-10-03 [0.9.26] jpy
+
+# 2004-10-03 [0.9.26] jpy
 - Began supplemental project "Habitat4JWeb," which provides utility
   classes to use in a J2EE application.  The binary and source
   implementations are provided separately to avoid classloader
@@ -397,21 +397,21 @@ URL:      http://www.productivity.org/projects/habitat4j/
   AbstractPropertyListManager to support it.  PropertyListManager
   also modified, yet continues to throw away all exceptions and return
   default values for all properties.
---------------------------------------------------------------------------
-2004-08-26 [0.9.25] jpy
+
+# 2004-08-26 [0.9.25] jpy
 - IMPORTANT:  Reload code repaired.  Removed race condition caused when
   reload feature is used in a multi-threaded application, and removed a
   NullPointer condition.
 - Added convenient PropertyListManager.setFeature(String,int) method,
   handy for setting the reload interval.
---------------------------------------------------------------------------
-2004-08-20 [0.9.24] jpy
+
+# 2004-08-20 [0.9.24] jpy
 - IMPORTANT: Habitat4J no longer requires log4j, and by default logs
   to System.out/System.err.  To switch to log4j, use the selectLog4j()
   method of the Habitat4JLogger Singleton class.  Similarly, to switch
   back to System.out/System.err mode, use the selectSystem() method.
---------------------------------------------------------------------------
-2004-08-18 [0.9.23] jpy
+
+# 2004-08-18 [0.9.23] jpy
 - IMPORTANT: Fixed issue in PropertyListHandler for improper handling of
   null String properties (empty elements) that resulted in ERROR logging.
 - Added PGP signatures for all files, and added PGP Public Key to
@@ -424,8 +424,8 @@ URL:      http://www.productivity.org/projects/habitat4j/
   AbstractPropertyListManager (_ prefix), and PropertyListManager.
 - Added JUnit tests to verify above.
 - Added extra logging for reflection errors.
---------------------------------------------------------------------------
-2004-08-07 [0.9.22] jpy
+
+# 2004-08-07 [0.9.22] jpy
 - Added loadPropertyList() method to AbstractPropertyListManager /
   PropertyListManager which checks to see if the given path argument
   is recognized by the ClassLoader and uses the
@@ -435,16 +435,16 @@ URL:      http://www.productivity.org/projects/habitat4j/
 - Made all "public" methods in AbstractPropertyListManager and
   AbstractServerIdentityManager "protected" since they will never be
   accessed outside of a wrapper class.
---------------------------------------------------------------------------
-2004-08-06 [0.9.21] jpy
+
+# 2004-08-06 [0.9.21] jpy
 - Fixed ServerIdentity.toString() issues with NullPointerException.
 - Cleaned up some JavaDoc.
 - Added version and modifiedBy attributes to server-identity element.
 - Added ability to specify name of a PropertyList in the XML file in
   the property-list element.
 - Modified JUnit tests to cover two additions above.
---------------------------------------------------------------------------
-2004-07-27 [0.9.20] jpy
+
+# 2004-07-27 [0.9.20] jpy
 - Cleaned up ServerIdentityManager to match conventions in
   PropertyListManager.
 - Added convenient accessor methods in ServerIdentityManager to get to
@@ -455,22 +455,22 @@ URL:      http://www.productivity.org/projects/habitat4j/
   used for validating ServerIdentity files outside of applications.
 - Modified ServerIdentity to only create new Hashtable() instances
   when needed.
---------------------------------------------------------------------------
-2004-07-22 [0.9.19] jpy
+
+# 2004-07-22 [0.9.19] jpy
 - Fixed NullPointerException caused deep in the XML parsing
   code if a PropertyBean's ID is invalid.
 - Removed check for a valid currentPropertyBean in the
   PropertyBeanArray handling code, which was listing a bogus errors in
   the logs.
 - Modified some debugging text.
---------------------------------------------------------------------------
-2004-07-21 [0.9.18] jpy
+
+# 2004-07-21 [0.9.18] jpy
 - Fixed an important problem with context where a context element contains
   an attribute that does NOT appear in the server-identity.xml file.
   Now, any context that has an attribute NOT in the server-identity.xml
   file will be ignored.
---------------------------------------------------------------------------
-2004-07-19 [0.9.17] jpy
+
+# 2004-07-19 [0.9.17] jpy
 - Renamed ReloadIF to ReloadEventHandlerIF.
 - Renamed XSD definitions element from reload to reload-event-handler,
   and added some use="optional" entries for the version/modifiedBy/
@@ -482,8 +482,8 @@ URL:      http://www.productivity.org/projects/habitat4j/
   PropertyListManager -- this class should only be a facade for 
   AbstractPropertyListManager.
 - Cleaned up some JavaDoc files.
---------------------------------------------------------------------------
-2004-07-18 [0.9.16] jpy
+
+# 2004-07-18 [0.9.16] jpy
 - Added "version," "modifiedBy," and "reloadSerial" attributes to
   the property-list element.
 - Added reload block flag in PropertyList to ensure the load can't happen
@@ -497,18 +497,18 @@ URL:      http://www.productivity.org/projects/habitat4j/
   Habitat4JApplicationsDETestSuite, since it takes > 120 seconds to
   confirm.
 - Added a setFeature() parameter for boolean values.
---------------------------------------------------------------------------
-2004-07-15 [0.9.15] jpy
+
+# 2004-07-15 [0.9.15] jpy
 - Modified code that generated a null pointer if XSD validation is turned
   off.
 - Modified reload code to reset the 'last loaded' timer when the interval
   has been reached and the file hasn't changed.
---------------------------------------------------------------------------
-2004-07-14 [0.9.14] jpy
+
+# 2004-07-14 [0.9.14] jpy
 - Small modifications for JUnit support via build.xml ANT script,
   not yet released.
---------------------------------------------------------------------------
-2004-07-13 [0.9.13] jpy
+
+# 2004-07-13 [0.9.13] jpy
 - Changed StringBuffer.indexOf() to a separate implementation to avoid
   compatibility issues with Java versions < 1.4.x
 - Removed newer Exception(Throwable) constructor implementations to avoid
@@ -516,15 +516,15 @@ URL:      http://www.productivity.org/projects/habitat4j/
 - Removed newer StringBuffer.append(Stringbuffer) references to avoid
   compatibility issues with Java versions < 1.4.x
 - Added ability to log with a certain priority when throwing exceptions.
---------------------------------------------------------------------------
-2004-07-05 [0.9.12] jpy
+
+# 2004-07-05 [0.9.12] jpy
 - Renamed ServerRole to ServerIdentityRole to maintain consistency.
 - Recoded decoder & decryptor to only instantiate a max of one each,
   with Habitat4JFeature to override.
 - Renamed JUnit test cases to be consistent with documentation.
 - Cleaned up some error logging/exception handling.
---------------------------------------------------------------------------
-2004-07-03 [0.9.11] jpy
+
+# 2004-07-03 [0.9.11] jpy
 - Added more JUnit test cases.
 - Rewrote how currentPropertyName is done in AbstractPropertyListManager
 - Added PropertyList methods to query whether a property was
@@ -533,33 +533,33 @@ URL:      http://www.productivity.org/projects/habitat4j/
   decoded or decrypted at load time are not displayed.
 - Added a queueing mechanism to set System and Security properties
   after the load has successfully completed.
---------------------------------------------------------------------------
-2004-07-01 [0.9.10] jpy
+
+# 2004-07-01 [0.9.10] jpy
 - Implemented two new initialization modes to make a total of three.
   The default mode (FILE) is to use a server-identity.xml file.  Second
   mode (JVM) loads the Server-Identity object with configuration from
   the JVM's System properties.  The third mode (NULL) loads a blank
   Server-Identity object.
---------------------------------------------------------------------------
-2004-06-21 [0.9.9] jpy
+
+# 2004-06-21 [0.9.9] jpy
 - Started contextual JUnit tests
 - Fixed bugs in PropertyListHandler.setPropertyListContext() and the
   invoker overridden methods.
 - Changed toDisplayString() methods to the standard toString()
 - Reorganized test data
---------------------------------------------------------------------------
-2004-06-20 [0.9.8] jpy
+
+# 2004-06-20 [0.9.8] jpy
 - Added support for 14 more types of PropertyBean parameters.
 - Fixed some erroneous JUnit test data.
---------------------------------------------------------------------------
-2004-06-20 [0.9.7] jpy
+
+# 2004-06-20 [0.9.7] jpy
 - Removed HOWTO.TXT, added habitat4j-examples.html
 - Reorganized distribution, added habitat4j-x.y.z-junit.jar
---------------------------------------------------------------------------
-2004-06-19 [0.9.6] jpy
+ 
+# 2004-06-19 [0.9.6] jpy
 - Minor corrections to property-list.xsd
---------------------------------------------------------------------------
-2004-06-19 [0.9.5] jpy
+
+# 2004-06-19 [0.9.5] jpy
 - Added encoder and encryptor support to all value elements
 - Renamed encoding to encoder, encrypting to encryptor
 - IMPORTANT: Removed hard-coded prefix delimiter - you'll need to
@@ -568,29 +568,27 @@ URL:      http://www.productivity.org/projects/habitat4j/
 - Added "package" attribute to <definitions>
 - Changed some constantly reused String instances to StringBuffer in
   PropertyListHandler
---------------------------------------------------------------------------
-2004-06-19 [0.9.4] jpy
+
+# 2004-06-19 [0.9.4] jpy
 - Added "encodingId" and "encryptionId" attributes to name/value
   properties
 - Added encoding and encryption definitions
 - Changed <property-bean-definitions> element to generic <definitions>
 - Added "instance" attribute for array, property-bean and
   property-bean-array
---------------------------------------------------------------------------
-2004-06-15 [0.9.3] jpy
+
+# 2004-06-15 [0.9.3] jpy
 - Added <property-bean-array> element and support for Bean array property
   values
---------------------------------------------------------------------------
-2004-06-14 [0.9.2] jpy
+
+# 2004-06-14 [0.9.2] jpy
 - Added <property-bean> element and support for Bean property values
---------------------------------------------------------------------------
-2004-06-14 [0.9.1] jpy
+
+# 2004-06-14 [0.9.1] jpy
 - Added <property-array> element and support for String array property
   values
 - Cleaned up various Javadoc comments
 - Added more test cases to Application A JUnit
---------------------------------------------------------------------------
-2004-06-14 [0.9.0] jpy
+
+# 2004-06-14 [0.9.0] jpy
 - Habitat4J is born!
---------------------------------------------------------------------------
-jpy
