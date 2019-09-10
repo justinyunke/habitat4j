@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<server-identity>
+  <!-- $Id: server-identity.xml,v 1.2 2005/09/03 22:48:19 cvs Exp $ -->
+  <application>
+    <environment>Production</environment>
+    <instance>
+      <name>server-prod-3</name>
+      <description>Production Application Server #3</description>
+      <enumeration>3</enumeration>
+    </instance>
+    <roles>
+      <role name="appServer">
+        <type>J2EE</type>
+        <vendor>JBOSS</vendor>
+        <product>JBOSS J2EE Server</product>
+        <version>3.2</version>
+        <patch-level>3</patch-level>
+      </role>
+    </roles>
+  </application>
+</server-identity>

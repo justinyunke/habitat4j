@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<server-identity>
+  <!-- $Id: server-identity.xml,v 1.2 2005/09/03 22:48:19 cvs Exp $ -->
+  <!-- This server will be used for Unit Testing by default. -->
+  <application>
+    <environment>Unit</environment>
+    <instance>
+      <name>server-unit-1</name>
+      <description>Unit Testing Server #1</description>
+      <enumeration>1</enumeration>
+    </instance>
+    <roles>
+      <role name="appServer">
+        <type>J2EE</type>
+        <vendor>JBOSS</vendor>
+        <product>JBOSS J2EE Server</product>
+        <version>3.2</version>
+        <patch-level>3</patch-level>
+      </role>
+
+      <!-- To ecomonize, this server will also be used as a database server. -->
+      <role name="dbServer">
+        <type>MySQL</type>
+        <vendor>MySQL AB</vendor>
+        <product>MySQL SQL Server</product>
+        <version>4.0</version>
+        <patch-level>19</patch-level>
+      </role>
+    </roles>    
+  </application>
+</server-identity>

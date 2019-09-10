@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<server-identity>
+  <application>
+    <environment>Development</environment>
+    <instance>
+      <name>local</name>
+      <description>Local Development Workstation</description>
+      <enumeration>1</enumeration>
+    </instance>
+  </application>
+</server-identity>

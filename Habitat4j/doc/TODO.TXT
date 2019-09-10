@@ -1,0 +1,55 @@
+--------------------------------------------------------------------------
+Document: TODO.TXT
+Version:  $Id: TODO.TXT,v 1.10 2006/08/16 13:31:15 cvs Exp $
+Author:   Justin Yunke <habitat4j@productivity.org>
+URL:      http://www.productivity.org/projects/habitat4j/
+--------------------------------------------------------------------------
+CURRENT TO-DO LIST (before 1.0.0 release)
+--------------------------------------------------------------------------
+This section lists items being worked on presently.
+
+1. Write more extensive documentation and examples.
+   
+--------------------------------------------------------------------------
+FUTURE TO-DO LIST (for post-1.1.0 release)
+--------------------------------------------------------------------------
+This section has "wish" list items and items that might take a
+rewrite or reengineering of Habitat4J.
+
+1. Consider the use of more "synchronized" in delicate areas of Habitat4J.
+
+2. Write a set of developer-friendly JUnit TestCases.
+   
+3. List Habitat4J on SourceForge, other sites.
+
+4. Ideas related to PropertyList maintenance:
+
+  - Native support for Date types in PropertyBean implementations
+  - PropertyListMetaInfo, PropertyBeanMetaInfo
+  - PropertyListContainer - holds actual PropertyList, and MetaInfo
+    relating to global reloading, global decryptor/decoder/beans,
+    configuration, extra object for the list-in-reload-state
+  - PropertyBeanContainer - holds actual bean definition, and MetaInfo
+    relating to parsing non-Strings including default #s and Date format
+  - Support for "direct public field access" for PropertyBean Objects,
+    so getters and setters are optional.  Goes against the standard
+    PropertyBean pattern, but would serve as a useful option for
+    3rd party Objects without getter/setters.
+
+5. Implement mechanism for Habitat4J to write properties back to files
+   safely.
+   
+6. Implement mechanism for Habitat4J to update an existing PropertyList
+   with a different PropertyList file.  Would have to design a "chain"
+   system so that (a) error conditions could resort the PropertyList to
+   the previous version, (b) an update could be performed multiple times.
+   
+7. Support for context based on System properties.
+
+8. Observers for the Habitat4JBootstrap so features can be set prior
+   to ServerIdentityManager/PropertyListManager initialization.
+
+--------------------------------------------------------------------------
+End of Habitat4J TODO
+--------------------------------------------------------------------------
+jpy

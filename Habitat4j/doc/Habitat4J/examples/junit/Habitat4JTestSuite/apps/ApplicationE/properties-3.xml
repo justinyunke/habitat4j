@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<property-list>
+  <!-- $Id: properties-3.xml,v 1.1 2007/02/25 18:52:04 cvs Exp $ -->
+  <context>
+    <property name="reloadInhibitorName1">reloadInhibitorValue3b</property>
+  </context>
+
+  <!-- Unit environment context explicitly removed to verify a null value for "reloadName"  -->
+
+  <context environment="Dev">
+    <property name="reloadName">reloadValue-3</property>
+    <property name="reloadInhibitorName3">reloadInhibitorValue3b</property>
+  </context>
+</property-list>

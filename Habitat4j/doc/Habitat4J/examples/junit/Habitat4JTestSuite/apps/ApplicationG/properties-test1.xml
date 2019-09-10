@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<property-list>
+	<context>
+		<property name="name1">value1</property>
+	</context>
+</property-list>

@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<property-list>
+  <context>
+    <property name="test.property.1">test.value.1</property>
+    <property name="test.property.2">test.value.2</property>
+  </context>
+</property-list>

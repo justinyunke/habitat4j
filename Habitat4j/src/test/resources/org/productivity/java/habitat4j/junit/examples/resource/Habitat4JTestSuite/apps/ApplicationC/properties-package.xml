@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<property-list name="bogusNameToGenerateLogWarning">
+  <definitions package="org.productivity.java.habitat4j.junit.examples.propertybean">
+    <property-bean id="commProtocolBean" class="SampleCommProtocolBean"/>
+  </definitions>
+  
+  <definitions package="org.productivity.java.habitat4j.junit.examples">
+    <decoder id="base64" class="decoder.SampleBase64EncoderDecoder"/>
+    <decryptor id="caesar" class="decryptor.SampleCaesarEncryptorDecryptor" alwaysNewInstance="true"/>
+  </definitions>
+	
+  <context>
+    <property name="encoded.5" decoderId="base64">ZW5jb2RlZC52YWx1ZS41</property>
+    <property name="encrypted.6" decryptorId="caesar">fodszqufe.wbmvf.7</property>
+    <property name="encoded.encrypted.7" decryptorId="caesar" decoderId="base64">ZW6kc3RmZC6mcnNzfXB1ZWQvenFteWUvNx==</property>
+    <property name="encrypted.encoded.8" decoderId="base64" decryptorId="caesar">Zm9kc3pxdWZlLmZvZHBlZmUud2JtdmYuOQ==</property>
+  </context>
+ 
+ <context prefix="encoded.encrypted.array.">
+    <property-array name="2">
+      <item decoderId="base64">ZW5jb2RlZC52YWx1ZS4yLjE=</item>
+      <item decryptorId="caesar">fodszqufe.wbmvf.3.3</item>
+   	  <item decryptorId="caesar" decoderId="base64">ZW6kc3RmZC6mcnNzfXB1ZWQvenFteWUvMj5a</item>
+	  <item decoderId="base64" decryptorId="caesar">Zm9kc3pxdWZlLmZvZHBlZmUud2JtdmYuMy41</item>
+	</property-array>
+  </context>
+  
+  <context prefix="ldap.server.">
+    <property-bean name="local" id="commProtocolBean">
+      <host decoderId="base64">MTI3LjAuMC4x</host>
+      <port decryptorId="caesar">757</port>
+      <service decryptorId="caesar" decoderId="base64">cGRidHM=</service>
+      <description decoderId="base64" decryptorId="caesar">TERBUFMgKERqc2ZkdXBzeikgU2Zzd2Zz</description>
+    </property-bean>
+  </context>
+
+  <context prefix="internal.smtp.">
+    <property-bean-array name="servers" id="commProtocolBean">
+      <item>
+        <host decoderId="base64">MTAuMS4wLjE=</host>
+        <port decryptorId="caesar">36</port>
+        <service decryptorId="caesar" decoderId="base64">d321dA==</service>
+        <description decoderId="base64" decryptorId="caesar">U01UUCAoTWJqbSkgU2Zzd2Zz</description>
+      </item>
+      <item>
+        <host decoderId="base64">MTAuMS4wLjI=</host>
+        <port decryptorId="caesar">576</port>
+        <service decryptorId="caesar" decoderId="base64">d321dHM=</service>
+        <description decoderId="base64" decryptorId="caesar">U01UUFMgKE1iam0pIFNmc3dmcw==</description>
+      </item>
+    </property-bean-array>
+  </context>
+</property-list>

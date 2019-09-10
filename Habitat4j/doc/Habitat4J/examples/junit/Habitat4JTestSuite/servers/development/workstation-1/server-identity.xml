@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<server-identity version="v10a" modifiedBy="jxsmith">
+  <!-- $Id: server-identity.xml,v 1.2 2005/09/03 22:48:11 cvs Exp $ -->
+  <!-- This server is actually a developer's workstation -->
+  <application>
+    <environment>Dev</environment>
+    <instance>
+      <name>workstation-1</name>
+      <description>Development Workstation #1</description>
+      <enumeration>1</enumeration>
+    </instance>
+    <pragma name="workstationUser">jxsmith</pragma>
+    <pragma name="substitutionTestStart">Start: </pragma>
+    <pragma name="substitutionTestEnd">success.</pragma>
+  </application>
+</server-identity>

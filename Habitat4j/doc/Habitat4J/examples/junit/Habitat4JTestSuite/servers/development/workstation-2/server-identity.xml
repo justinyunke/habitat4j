@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<server>
+	<realm>Dev</realm>
+	<serverName>developer-workstation-1</serverName>
+	<desc>My Developer Workstation</desc>
+</server>

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<property-list>
+  <definitions>
+    <property-bean id="language" class="org.productivity.org.java.habitat4j.example.LanguageBean"/>
+  </definitions>
+  <context>
+    <property-bean-array name="test.property.bean.array" id="language">
+      <item key="en_us">
+        <name>English</name>
+        <accent>Boston</accent>
+        <type>verbal</type>
+      </item>
+      <item key="zh_tw">
+        <name>Chinese</name>
+        <type>written</type>     
+      </item>
+    </property-bean-array>
+  </context>
+</property-list>

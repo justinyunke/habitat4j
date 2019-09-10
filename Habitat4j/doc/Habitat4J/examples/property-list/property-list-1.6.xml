@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<property-list>
+  <context>
+    <property-array name="test.property.array.english">
+      <item key="1">one</item>
+      <item key="2">two</item>
+      <item key="3">three</item>
+    </property-array>
+    <property-array name="test.property.array.spanish">
+      <item key="one">uno</item>
+      <item key="two">dos</item>
+      <item key="three">tres</item>
+    </property-array>
+  </context>
+</property-list>

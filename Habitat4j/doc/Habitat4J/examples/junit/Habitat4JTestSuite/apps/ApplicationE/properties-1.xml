@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<property-list> 
+  <!-- $Id: properties-1.xml,v 1.4 2005/09/10 22:53:07 cvs Exp $ -->
+  <definitions>
+    <reload-event-handler class="org.productivity.java.habitat4j.junit.examples.reload.SampleReloadEventHandler" />
+  </definitions>
+
+  <context>
+    <property name="reloadInhibitorName1">reloadInhibitorValue1</property>
+    <property name="reloadInhibitorName2">reloadInhibitorValue2</property>
+  </context>
+
+  <context environment="Unit">
+    <property name="reloadName">reloadValue-1</property>
+  </context>
+
+  <context environment="Dev">
+    <property name="reloadName">reloadValue-1b</property>
+  </context>
+</property-list>

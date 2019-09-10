@@ -1,0 +1,626 @@
+<html>
+
+<!-- CVS Version Information: $Id: habitat4j-examples.html,v 1.4 2005/09/21 07:13:38 cvs Exp $ -->
+<!-- For more information including licensing, please consult:  http://productivity.org/projects/habitat4j/ -->
+
+<head>
+<style>
+</style>
+</head>
+
+<table border="0" width="100%"><tr>
+  <td width=3 bgcolor="#000000">&nbsp;</td>
+  <td width=3>&nbsp;</td><td>
+<h2>Habitat4J Example Index</h2>
+
+<b>Starter Examples</b>
+<ul>
+  <li><a href="#starter-1.0">Starter Example 1.0</a> - Preparing for Habitat4J</li>
+  <li><a href="#starter-1.1">Starter Example 1.1</a> - Creating and Deploying a Minimal Server-Identity XML File</li>
+  <li><a href="#starter-1.2">Starter Example 1.2</a> - Creating a Simple Server-Identity XML File</li>
+  <li><a href="#starter-1.3">Starter Example 1.3</a> - Creating and Using a Simple Property-List XML File</li>
+  <li><a href="#starter-1.4">Starter Example 1.4</a> - Using Multiple Property-List XML Files</li>
+  <li><a href="#starter-1.5">Starter Example 1.5</a> - Using a Property Array</li>
+  <li><a href="#starter-1.6">Starter Example 1.6</a> - Using a Property Hash</li>
+  <li><a href="#starter-1.7">Starter Example 1.7</a> - Using a Property Bean</li>
+  <li><a href="#starter-1.8">Starter Example 1.8</a> - Using a Property Bean Array</li>
+  <li><a href="#starter-1.9">Starter Example 1.9</a> - Using a Property Bean Hash</li>
+  <li><a href="#starter-1.10">Starter Example 1.10</a> - Setting System &amp; Security Properties</li>
+  <li><a href="#starter-1.11">Starter Example 1.11</a> - Using Built-in XSD Validation (Highly Recommended)</li>
+</ul>
+
+<b>Intermediate Examples</b>
+<ul>
+  <li><a href="#intermediate-2.0">Intermediate Example 2.0</a> - Enabling log4j Support in Habitat4J</li>
+</ul>
+
+<b>Advanced Examples</b>
+<ul>
+  <li><a href="#advanced-3.0">Advanced Example 3.0</a> - Avoiding the Server-Identity XML File: JVM</li>
+  <li><a href="#advanced-3.1">Advanced Example 3.1</a> - Avoiding the Server-Identity XML File: NULL</li>
+  <li><a href="#advanced-3.2">Advanced Example 3.2</a> - Habitat4J Features: Allowing Override of System &amp; Security Properties</li>
+  <li><a href="#advanced-3.3">Advanced Example 3.3</a> - Habitat4J Features: Allowing lax server role names</li>
+</ul>
+
+<hr size="1"/>
+<b><a name="starter-1.0">Starter Example 1.0</a> - Preparing for Habitat4J</b><br><br>
+<p>You will need the following ready prior to reading through and testing the following
+examples:</p>
+
+<ul>
+	<li>A name for your application, such as:  MyApp</li>
+	<li>A name for your computer, such as:  Local</li>
+	<li>A development environment for your computer, such as:  Development
+	<li>A place to put the computer-global Server Identity file, such as:
+	<u>c:/apps/server-identity.xml</u> or <u>/etc/apps/server-identity.xml</u>.</li>
+	<li>The latest version of the <a href="http://productivity.org/projects/habitat4j/">Habitat4J</a> jar on your classpath.  The file is provided with the naming format:
+	<u>habitat4j-x.y.z.jar</u>.</li>
+	<li>The <a href="http://logging.apache.org/log4j/">log4j logger</a> on your classpath (optional, see <a href="#intermediate-2.0">Enabling log4j Support in Habitat4J</a>).</li>
+	<li>A <a href="http://xml.apache.org/">Xerces XML implementation</a> on your classpath.</li>
+	<li>A <a href="http://sax.sourceforge.net/">SAX XML parser implementation</a> on your classpath.</li>
+</ul>
+
+<hr size="1"/>
+<b><a name="starter-1.1">Starter Example 1.1</a> - Creating and Deploying a Minimal Server-Identity XML File</b><br><br>
+<p>The absolute bare minimum needed if there is no intention to use the contextual capability of
+Habitat4J is the following <u>server-identity.xml</u>:</p>
+<pre>
+&lt;?xml version="1.0"?&gt;
+&lt;server-identity/&gt;
+</pre>
+<p>If deploying your code to a Microsoft Windows environment, the default location is the root folder of
+the drive your app server/test environment/IDE is running under.  For most users, the likely location
+is <u>c:\server-identity.xml</u>.</p>
+
+<p>If deploying your code to a Un*x environment, the default location is the root directory, i.e.
+<u>/server-identity.xml</u>.</p>
+
+<p>To override this default, set your JVM "-D" property <b>or</b> execute a System.setProperty()
+prior to initializing Habitat4J.  It is recommended that you place this file in a common area
+for use by all of your Java applications.  For instance:</p>
+
+<pre>
+  System.setProperty(
+    "org.productivity.java.habitat4j.serverIdentityFilePath",
+    "c:/apps/server-identity.xml"
+  );  
+</pre>
+
+<p>(or)</p>
+
+<pre>
+  System.setProperty(
+    "org.productivity.java.habitat4j.serverIdentityFilePath",
+    "/etc/apps/server-identity.xml"
+  );  
+</pre>
+
+<hr size="1"/>
+<b><a name="starter-1.2">Starter Example 1.2</a> - Creating a Simple Server-Identity XML File</b><br><br>
+<p>The following simple <u>server-identity.xml</u> example is recommended to get started with Habitat4J:</p>
+<pre>
+&lt;?xml version="1.0"?&gt;
+&lt;server-identity&gt;
+  &lt;application&gt;
+    &lt;environment&gt;Development&lt;/environment&gt;
+    &lt;instance&gt;
+      &lt;name&gt;local&lt;/name&gt;
+      &lt;description&gt;Local Development Workstation&lt;/description&gt;
+      &lt;enumeration&gt;1&lt;/enumeration&gt;
+    &lt;/instance&gt;
+  &lt;/application&gt;
+&lt;/server-identity&gt;
+</pre>
+
+<p>Please follow the same deployment instructions as noted in <a href="#starter-1.1">Starter Example 1.1</a>.</p>
+
+<hr size="1"/>
+<b><a name="starter-1.3">Starter Example 1.3</a> - Creating and Using a Simple Property-List XML File</b><br><br>
+<p>Start with the following <u>property-list-1.3.xml</u> example XML file:</p>
+
+<pre>
+&lt;?xml version="1.0"?&gt;
+&lt;property-list&gt;
+  &lt;context&gt;
+    &lt;property name="test.property.1"&gt;test.value.1&lt;/property&gt;
+    &lt;property name="test.property.2"&gt;test.value.2&lt;/property&gt;
+  &lt;/context&gt;
+&lt;/property-list&gt;
+</pre>
+
+<p>You can store this file anywhere in your filesystem, or in a classpath resource (see
+<a href="#intermediate-x.y">Intermediate Example x.y</a>).  For sake of this example, we'll place the
+file in <u>c:/apps/myapp/property-list-1.3.xml</u>.</p>
+
+<p>Here's the code you'll need to retrieve these properties.</p>
+
+<pre>
+  // Do the following three lines once, when you application starts up
+  // (commonly called the "bootstrap" initialization)
+
+  // NOTE: The setProperty() call is not be necessary if you have placed the
+  // server-identity.xml file in the default Habitat4J location, or if you've
+  // used a JVM (-D) property entry.
+  System.setProperty(
+    "org.productivity.java.habitat4j.serverIdentityFilePath",
+    "c:/apps/server-identity.xml"
+  );  
+  PropertyListManager.initialize("MyApp");
+  PropertyListManager.loadPropertyListFromFile("c:/apps/myapp/property-list-1.3.xml");
+
+  // Do this anywhere in your application  
+  String testPropertyOne = PropertyListManager.getProperty("test.property.1");
+  String testPropertyTwo = PropertyListManager.getProperty("test.property.2");
+</pre>
+
+<p>NOTE: By calling loadPropertyListFromFile() with one parameter, you're loading the
+"default" list.  This list literally has the identifying name of <b>default</b>.
+All Property accessor methods are set up so that if you omit the identifying list name,
+you're accessing the default list.  The next Starter Example shows how to use
+multiple lists beyond the default list.</p>
+
+<p>NOTE: If you don't have the <u>server-identity.xml</u> or <u>property-list-1.3.xml</u> files deployed,
+the <b>initialize()</b> method call will <b>not</b> generate an exception,
+but the <b>loadPropertyListFromFile()</b> will generate a PropertyListHandlerException.</p>
+
+<hr size="1"/>
+<b><a name="starter-1.4">Starter Example 1.4</a> - Using Multiple Property-List XML Files</b><br><br>
+<p>Here we define two files, <u>property-list-1.4a.xml</u>:</p>
+
+<pre>
+&lt;?xml version="1.0"?&gt;
+&lt;property-list&gt;
+  &lt;context&gt;
+    &lt;property name="test.property.a"&gt;test.value.a&lt;/property&gt;
+  &lt;/context&gt;
+&lt;/property-list&gt;
+</pre>
+
+<p>...and <u>property-list-1.4b.xml</u>:</p>
+
+<pre>
+&lt;?xml version="1.0"?&gt;
+&lt;property-list&gt;
+  &lt;context&gt;
+    &lt;property name="test.property.b"&gt;test.value.b&lt;/property&gt;
+  &lt;/context&gt;
+&lt;/property-list&gt;
+</pre>
+
+<p>Here's the code to access them:</p>
+
+<pre>
+  // [Insert bootstrap code in Starter Example 1.3]
+  // Do the following during bootstrap
+  PropertyListManager.loadPropertyListFromFile("listA","c:/apps/myapp/property-list-1.4a.xml");
+  PropertyListManager.loadPropertyListFromFile("listB","c:/apps/myapp/property-list-1.4b.xml");
+  
+  // Do this anywhere in your application
+  String testA = PropertyListManager.getProperty("listA","test.property.a");  
+  String testB = PropertyListManager.getProperty("listB","test.property.b"); 
+</pre>
+
+<p>If you omit the first parameter to the getProperty() method, you'll be accessing the
+<b>default</b> list.  For an example of loading the default list, see
+<a href="#starter-1.3">Starter Example 1.3</a>.</p>
+
+<p>RECOMMENDATION: If you plan to use multiple Property-Lists, it is suggested that you
+create global static definitions for your property names in lieu of repeating the String
+identifier.  A single typo could result in a null entry where your application was
+expecting a value.</p>
+
+<hr size="1"/>
+<b><a name="starter-1.5">Starter Example 1.5</a> - Using a Property Array</b><br><br>
+<p>Habitat4J allows you to store more than just name/value pairs.  This example shows
+how to use a value array.<p>
+
+<p>Here we define <u>property-list-1.5.xml</u>:</p>
+
+<pre>
+&lt;?xml version="1.0"?&gt;
+&lt;property-list&gt;
+  &lt;context&gt;
+    &lt;property-array name="test.property.array.english"&gt;
+      &lt;item&gt;one&lt;/item&gt;
+      &lt;item&gt;two&lt;/item&gt;
+      &lt;item&gt;three&lt;/item&gt;
+    &lt;/property-array&gt;
+    &lt;property-array name="test.property.array.spanish"&gt;
+      &lt;item&gt;uno&lt;/item&gt;
+      &lt;item&gt;dos&lt;/item&gt;
+      &lt;item&gt;tres&lt;/item&gt;
+    &lt;/property-array&gt;
+  &lt;/context&gt;
+&lt;/property-list&gt;
+</pre>
+
+<p>Here's the code:</p>
+
+<pre>
+  // [Insert bootstrap code in Starter Example 1.3]
+  // Do the following during bootstrap
+  PropertyListManager.loadPropertyListFromFile("language","c:/apps/myapp/property-list-1.5.xml");
+  
+  // Do this anywhere in your application
+  String[] english = PropertyListManager.getPropertyArray("language","test.property.array.english");  
+  String[] spanish = PropertyListManager.getPropertyArray("language","test.property.array.spanish");
+</pre>
+
+<hr size="1"/>
+<b><a name="starter-1.6">Starter Example 1.6</a> - Using a Property Hash</b><br><br>
+<p>Habitat4J allows you to store values in an easy-to-use Hashtable:<p>
+
+<p>Here we define <u>property-list-1.6.xml</u>:</p>
+
+<pre>
+&lt;?xml version="1.0"?&gt;
+&lt;property-list&gt;
+  &lt;context&gt;
+    &lt;property-hash name="test.property.array.english"&gt;
+      &lt;item key="1"&gt;one&lt;/item&gt;
+      &lt;item key="2"&gt;two&lt;/item&gt;
+      &lt;item key="3"&gt;three&lt;/item&gt;
+    &lt;/property-hash&gt;
+    &lt;property-hash name="test.property.array.spanish"&gt;
+      &lt;item key="one"&gt;uno&lt;/item&gt;
+      &lt;item key="two"&gt;dos&lt;/item&gt;
+      &lt;item key="three"&gt;tres&lt;/item&gt;
+    &lt;/property-hash&gt;
+  &lt;/context&gt;
+&lt;/property-list&gt;
+</pre>
+
+<p>Here's the code:</p>
+
+<pre>
+  // [Insert bootstrap code in Starter Example 1.3]
+  // Do the following during bootstrap
+  PropertyListManager.loadPropertyListFromFile("language","c:/apps/myapp/property-list-1.6.xml");
+  
+  // Do this anywhere in your application
+  PropertyHash english = PropertyListManager.getPropertyHash("language","test.property.array.english");  
+  PropertyHash spanish = PropertyListManager.getPropertyHash("language","test.property.array.spanish");
+  
+  String one = (String) english.get("1");
+  String tres = (String) spanish.get("three");
+
+  // or, alternately, you can get the value directly (without the Hashtable) with this code:
+  
+  String oneAlt =
+    PropertyListManager.getPropertyHashValue("languageProfileGroup","test.property.array.english","1");
+
+  String tresAlt =
+    PropertyListManager.getPropertyHashValue("languageProfileGroup","test.property.array.spanish","three");
+</pre>
+
+<hr size="1"/>
+<b><a name="starter-1.7">Starter Example 1.7</a> - Using a Property Bean</b><br><br>
+
+<p>Habitat4J also allows the use of a Javabean.  First, you'll need
+to either use or create a Javabean -- which is simply a Java Object that implements a
+default constructor (public with no arguments) and fields accessible via "getter" and
+"setter" methods.  For example, we'll use the following <u>LanguageBean.java</u> Class:</p>
+
+<pre>
+  // NOTE: The following bean is actually not implemented in Habitat4J.
+  package org.productivity.org.java.habitat4j.example;
+
+  public class LanguageBean {
+    private String name = null;
+    private String accent = null;
+    private String type = null;
+    
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+
+    public String getAccent() { return accent; }
+    public void setAccent(String accent) { this.accent = accent; }
+
+    public String getType() { return type; }
+    public void setType(String type) { this.type = type; }
+  }
+</pre>
+
+<p>Next, we'll need to define the Property-List <u>property-list-1.7.xml</u>:</p>
+
+<pre>
+&lt;?xml version="1.0"?&gt;
+&lt;property-list&gt;
+  &lt;definitions&gt;
+    &lt;property-bean id="language" class="org.productivity.org.java.habitat4j.example.LanguageBean"/&gt;
+  &lt;/definitions&gt;
+  &lt;context&gt;
+    &lt;property-bean name="test.property.bean.english.boston" id="language"&gt;
+      &lt;name&gt;English&lt;/name&gt;
+      &lt;accent&gt;Boston&lt;/accent&gt;
+      &lt;type&gt;verbal&lt;/type&gt;
+    &lt;/property-bean&gt;
+    &lt;property-bean name="test.property.bean.chinese.mandarin" id="language"&gt;
+      &lt;name&gt;Chinese&lt;/name&gt;
+      &lt;type&gt;written&lt;/type&gt;     
+    &lt;/property-bean&gt;
+  &lt;/context&gt;
+&lt;/property-list&gt;
+</pre>
+
+<p>As shown above, you need to set up a symbolic definition that specifies an <b>id</b> to be used 
+to reference a bean of a certain <b>class</b>.  This needs to be done only once per Property-List
+XML File.  Then, when you define each value instance of <b>property-bean</b>, you need to reference
+the <b>id</b> so that Habitat4J knows which class object to instantiate.</p>
+
+<p>Finally, here's the code:</p>
+
+<pre>
+  // [Insert bootstrap code in Starter Example 1.3]
+  // Do the following during bootstrap
+  PropertyListManager.loadPropertyListFromFile("languageProfiles","c:/apps/myapp/property-list-1.7.xml");
+  
+  // Do this anywhere in your application
+  LanguageBean bostonBean =
+    (LanguageBean) PropertyListManager.getPropertyBean("languageProfiles","test.property.bean.english.boston");  
+  LanguageBean mandarinBean =
+    (LanguageBean) PropertyListManager.getPropertyBean("languageProfiles","test.property.bean.chinese.mandarin");
+</pre>
+
+<p>The following bean parameter types are supported by Habitat4J:</p>
+
+<u>Primitive Types</u>
+<ul>
+  <li>short</li>
+  <li>int</li>
+  <li>long</li>
+  <li>double</li>
+  <li>float</li>
+  <li>char</li>
+  <li>boolean</li>
+</ul>
+
+<u>Object Types</u>
+<ul>
+  <li>Short</li>
+  <li>Integer</li>
+  <li>BigInteger</li>
+  <li>Long</li>
+  <li>Double</li>
+  <li>Float</li>
+  <li>BigDecimal</li>
+  <li>Character</li>
+  <li>Boolean</li>
+  <li>String</li>
+</ul>
+
+<p>NOTE: You'll have to cast the return value of getPropertyBean().</p>
+
+<p>NOTE: You can use more than one bean definition, as long as you choose a unique <b>id</b>.</p>
+
+<hr size="1"/>
+<b><a name="starter-1.8">Starter Example 1.8</a> - Using a Property Bean Array</b><br><br>
+
+<p>Habitat4J can handle an array of instances of PropertyBean.  Using the same class definition
+found in <a href="#starter-1.7">Starter Example 1.7</a>, here's the Property-List <u>property-list-1.8.xml</u>:</p>
+
+<pre>
+&lt;?xml version="1.0"?&gt;
+&lt;property-list&gt;
+  &lt;definitions&gt;
+    &lt;property-bean id="language" class="org.productivity.org.java.habitat4j.example.LanguageBean"/&gt;
+  &lt;/definitions&gt;
+  &lt;context&gt;
+    &lt;property-bean-array name="test.property.bean.array" id="language"&gt;
+      &lt;item&gt;
+        &lt;name&gt;English&lt;/name&gt;
+        &lt;accent&gt;Boston&lt;/accent&gt;
+        &lt;type&gt;verbal&lt;/type&gt;
+      &lt;/item&gt;
+      &lt;item&gt;
+        &lt;name&gt;Chinese&lt;/name&gt;
+        &lt;type&gt;written&lt;/type&gt;     
+      &lt;/item&gt;
+    &lt;/property-bean-array&gt;
+  &lt;/context&gt;
+&lt;/property-list&gt;
+</pre>
+
+<p>Here's the code:</p>
+
+<pre>
+  // [Insert bootstrap code in Starter Example 1.3]
+  // Do the following during bootstrap
+  PropertyListManager.loadPropertyListFromFile("languageProfileGroup","c:/apps/myapp/property-list-1.6.xml");
+  
+  // Do this anywhere in your application
+  LanguageBean[] languages = 
+    (LanguageBean[]) PropertyListManager.getPropertyBeanArray("languageProfileGroup","test.property.bean.array");  
+</pre>
+
+<p>NOTE: You'll have to cast the return value of getPropertyBean().  Be sure to include the array identifier, or [].</p>
+
+<hr size="1"/>
+<b><a name="starter-1.9">Starter Example 1.9</a> - Using a Property Bean Hash</b><br><br>
+
+<p>Habitat4J can handle a Hashtable of instances of PropertyBean.  Using the same class definition
+found in <a href="#starter-1.7">Starter Example 1.7</a>, here's the Property-List <u>property-list-1.9.xml</u>:</p>
+
+<pre>
+&lt;?xml version="1.0"?&gt;
+&lt;property-list&gt;
+  &lt;definitions&gt;
+    &lt;property-bean id="language" class="org.productivity.org.java.habitat4j.example.LanguageBean"/&gt;
+  &lt;/definitions&gt;
+  &lt;context&gt;
+    &lt;property-bean-hash name="test.property.bean.hash" id="language"&gt;
+      &lt;item key="en_us"&gt;
+        &lt;name&gt;English&lt;/name&gt;
+        &lt;accent&gt;Boston&lt;/accent&gt;
+        &lt;type&gt;verbal&lt;/type&gt;
+      &lt;/item&gt;
+      &lt;item key="zh_tw"&gt;
+        &lt;name&gt;Chinese&lt;/name&gt;
+        &lt;type&gt;written&lt;/type&gt;     
+      &lt;/item&gt;
+    &lt;/property-bean-hash&gt;
+  &lt;/context&gt;
+&lt;/property-list&gt;
+</pre>
+
+<p>Here's the code:</p>
+
+<pre>
+  // [Insert bootstrap code in Starter Example 1.3]
+  // Do the following during bootstrap
+  PropertyListManager.loadPropertyListFromFile("languageProfileGroup","c:/apps/myapp/property-list-1.6.xml");
+  
+  // Do this anywhere in your application
+  PropertyHash languages = 
+    PropertyListManager.getPropertyBeanHash("languageProfileGroup","test.property.bean.hash");
+    
+  LanguageBean english = (LanguageBean) languages.get("en_us");
+  LanguageBean chinese = (LanguageBean) languages.get("zh_tw");
+  
+  // or, alternately, you can get the PropertyBean implementation directly with this code:
+  
+  LanguageBean englishAlt = (LanguageBean)
+    PropertyListManager.getPropertyBeanHashValue("languageProfileGroup","test.property.bean.hash","en_us");
+
+  LanguageBean chineseAlt = (LanguageBean)
+    PropertyListManager.getPropertyBeanHashValue("languageProfileGroup","test.property.bean.hash","zh_tw");
+</pre>
+
+<p>NOTE: For the use of PropertyListManager.getPropertyHash(..), you'll have to cast the Hashtable get() return value.</p>
+
+<hr size="1"/>
+<b><a name="starter-1.10">Starter Example 1.10</a> - Setting System Properties</b><br><br>
+<p>Habitat4J allows you to set System and Security properties.  Here's the Property-List <u>property-list-1.10.xml</u>:</p>
+
+<pre>
+&lt;?xml version="1.0"?&gt;
+&lt;property-list&gt;
+  &lt;context&gt;
+    &lt;system-property name="system.property.1"&gt;system.property.value.1&lt;/system-property&gt;
+    &lt;security-property name="security.property.1"&gt;security.property.value.1&lt;/security-property&gt;
+  &lt;/context&gt;
+&lt;/property-list&gt;
+</pre>
+
+<p>No additional code is needed.  This property will be set within the proper context.  Habitat4J
+simply executes the System.setProperty() and Security.setProperty() methods.</p>
+
+<hr size="1"/>
+<b><a name="starter-1.11">Starter Example 1.11</a> - Using Built-In XSD Validation (Highly Recommended)</b><br><br>
+
+<p>It is highly recommended that Habitat4J's XSD Validation feature is turned on, for both
+Server-Identity XML files as well as Property-List XML files.  To do this, execute this code
+before loading the Property-List XML files:</p>
+
+<pre>
+  PropertyListManager.setFeature(Habitat4JFeatures.SERVER_IDENTITY_FEATURE_XSD_VALIDATION,true);
+  PropertyListManager.setFeature(Habitat4JFeatures.PROPERTY_LIST_FEATURE_XSD_VALIDATION,true);
+</pre>
+
+<hr size="1"/>
+<b><a name="intermediate-2.0">Intermediate Example 2.0</a> - Enabling log4j Support in Habitat4J</b><br><br>
+
+<p>Habitat4J is set to log to System.out/System.err by default.  You can
+also choose to use log4j.</p>
+
+<p>First, in your code, perform the following:</p>
+
+<pre>
+Habitat4JLogger logger = Habitat4JLogger.getInstance();
+logger.selectLog4j();
+</pre>
+
+<p>Then, include the following entries in your application's <u>log4j.xml</u> file:<p>
+
+<pre>
+  &lt;appender name="Habitat4JConsole" class="org.apache.log4j.ConsoleAppender"&gt;
+    &lt;param name="Target" value="System.out"/&gt;
+    &lt;param name="Threshold" value="DEBUG"/&gt;
+
+    &lt;layout class="org.apache.log4j.PatternLayout"&gt;
+      &lt;param name="ConversionPattern" value="%d{ABSOLUTE} %-5p [%c{1}] %m%n"/&gt;
+    &lt;/layout&gt;
+  &lt;/appender&gt;
+
+  &lt;appender name="Habitat4JAppender" class="org.apache.log4j.AsyncAppender"&gt;
+    &lt;appender-ref ref="Habitat4JConsole"/&gt;
+    &lt;/appender&gt;
+
+  &lt;category name="org.productivity.java.habitat4j" additivity="false" &gt;
+    &lt;priority value="INFO" /&gt;
+    &lt;appender-ref ref="Habitat4JAppender"/&gt;
+  &lt;/category&gt;
+</pre>
+
+<p>If you're familiar with log4j, feel free to modify the above to point to
+a different appender.</p>
+
+<p>NOTE: You can switch between System.out/System.err and log4j logging modes at
+any time during runtime.  Use the logger.selectSystem() method to put Habitat4J
+back into the System.out/System.err logging mode.</p>
+
+<hr size="1"/>
+<b><a name="advanced-3.0">Advanced Example 3.0</a> - Avoiding the Server-Identity XML File: JVM</b><br><br>
+
+<p>Although it is highly recommended that a Server-Identity XML file be used to define
+your application's context, you can initialize the Habitat4J Server-Identity object through
+JVM properties.</p>
+
+<p>First, set the following parameters in your JVM (commonly called -D parameters):</p>
+
+<pre>
+  -D "server-identity.application.environment=Development"
+  -D "server-identity.application.instance.name=local"
+  -D "server-identity.application.instance.enumeration=1"
+  -D "server-identity.application.instance.description=Local Development Server #1"
+</pre>
+
+<p>Then, when calling the "initialize()" method, include an additional String parameter:</p>
+
+<pre>
+  PropertyListManager.initialize("MyApp","J");
+</pre>
+
+<hr size="1"/>
+<b><a name="advanced-3.1">Advanced Example 3.1</a> - Avoiding the Server-Identity XML File: NULL</b><br><br>
+
+<p>Although it is highly recommended that a Server-Identity XML file be used to define
+your application's context, you can initialize a blank Habitat4J Server-Identity object
+containing NULL values.  This means that Habitat4J will be used as a straight-forward
+property manager, and the context capabilities of Habitat4J are lost.</p>
+
+<p>To do this, when calling the "initialize()" method include an additional String parameter:</p>
+
+<pre>
+  PropertyListManager.initialize("MyApp","N");
+</pre>
+
+<hr size="1"/>
+<b><a name="advanced-3.2">Advanced Example 3.2</a> - Habitat4J Features: Allowing Override of System & Security Properties</b><br><br>
+
+<p>It may not be desirable to override System or Security properties that are already set.  Therefore,
+by default, Habitat4J will not override them.  To turn this behavior off, simply add one or
+both of these lines before the code used to load the Property-List XML files:</p>
+
+<pre>
+  PropertyListManager.setFeature(Habitat4JFeatures.PROPERTY_LIST_FEATURE_SYSTEM_PROPERTY_OVERRIDE,true);
+  PropertyListManager.setFeature(Habitat4JFeatures.PROPERTY_LIST_FEATURE_SECURITY_PROPERTY_OVERRIDE,true);
+</pre>
+
+<hr size="1"/>
+<b><a name="advanced-3.3">Advanced Example 3.3</a> - Habitat4J Features: Allowing lax server role names</b><br><br>
+
+<p>By default, Habitat4J only allows the following <b>name</b> attribute values for the <b>role</b>
+element in the Server-Identity XML file:  <b>appServer</b>, <b>dbServer</b>, and <b>webServer</b>.
+To use other <b>name</b> attribute values, you can set this Habitat4J feature:</p>
+
+<pre>
+  PropertyListManager.setFeature(Habitat4JFeatures.SERVER_IDENTITY_FEATURE_LAX_ROLENAMES,true);
+</pre>
+
+<hr size=1>
+
+<b>More examples coming!  Please be patient.</b>
+
+</td></tr></table>
+</html>

@@ -1,0 +1,355 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2//EN">
+
+<html>
+  <head>
+    <meta name="generator" content="HTML Tidy, see www.w3.org">
+
+    <title></title>
+  </head>
+
+  <body>
+    <a name="#top"></a> 
+
+    <table border="0" width="100%">
+      <tr>
+        <td width="3" bgcolor="#000000">&nbsp;</td>
+
+        <td width="3">&nbsp;</td>
+
+        <td>
+          <h2>Habitat4JBootstrap, Habitat4JBootstrapServlet, and
+          Examples</h2>
+          <a name="#top"><b>Habitat4JBootstrap Information</b></a> 
+
+          <ul>
+            <li><a href="#section-1.0">1.0 - Habitat4JBootstrap -
+            Introduction</a></li>
+
+            <li><a href="#section-1.1">1.1 - Habitat4JBootstrap -
+            Goals</a></li>
+
+            <li><a href="#section-1.2">1.2 - Habitat4JBootstrap -
+            Bootstrap Parameters</a></li>
+
+            <li><a href="#section-1.3">1.3 - Habitat4JBootstrap -
+            Bootstrap PropertyList File</a></li>
+
+            <li><a href="#section-1.4">1.4 - Habitat4JBootstrap -
+            Application PropertyList System Files</a></li>
+
+            <li><a href="#section-1.5">1.5 - Habitat4JBootstrap -
+            Application PropertyList Classpath Files</a></li>
+            
+          </ul><b>Habitat4JBootstrapServlet Information</b> 
+
+          <ul>
+            <li><a href="#section-2.0">2.0 - Habitat4JBootstrapServlet
+            - Servlet Configuration</a></li>
+
+            <li><a href="#section-2.1">2.1 - Habitat4JBootstrapServlet
+            - Initialization Parameters (init-param)</a></li>
+          </ul><b>Examples</b> 
+
+          <ul>
+            <li><a href="#section-3.0">3.0 - Examples - Bootstrap Code
+            (Non-Servlet)</a></li>
+
+            <li><a href="#section-3.1">3.1 - Examples - Bootstrap
+            PropertyList</a></li>
+
+            <li><a href="#section-3.2">3.2 - Examples - Application
+            PropertyList (FileSystem)</a></li>
+
+            <li><a href="#section-3.3">3.3 - Examples - Application
+            PropertyList (ClassPath)</a></li>
+
+            <li><a href="#section-3.4">3.4 - Examples - Web Descriptor
+            (web.xml)</a></li>
+          </ul>
+          
+          <hr size="1">
+          <b><a name="section-1.0">1.0 - Habitat4JBootstrap -
+          Introduction</a>&nbsp;[<a href="#top">Top</a>]<br>
+          <br>
+          </b> 
+
+          <p>The "bootstrap" process occurs during the initialization,
+          or start-up, phase of a Java application. Habitat4J makes
+          available the Habitat4JBootstrap static Java class, which
+          sets up Habitat4J for an application.</p>
+
+          <p>Habitat4JBootstrap, by default, uses a defined standard
+          for the layout of an application's PropertyList files. This
+          standard is described in this document.</p>
+
+          <p>Habitat4JBootstrapServlet is a wrapper for
+          Habitat4JBootstrap. It provides identical functionality and
+          only serves as a mechanism to pass parameters into
+          Habitat4JBootstrap.</p>
+          
+          <hr size="1">
+          <b><a name="section-1.1">1.1 - Habitat4JBootstrap - Goals</a>
+          &nbsp;[<a href="#top">Top</a>]<br>
+          <br>
+          </b> 
+
+          <p>Habitat4JBootstrap provides a JVM-wide environment for
+          Habitat4J, setting:</p>
+
+          <ul>
+            <li>Habitat4J's logger (System.out/err or log4j) and level</li>
+
+            <li>XSD validation on/off</li>
+
+            <li>Rules for reloading files while application is running</li>
+
+            <li>Location of the server-wide <code>server-identity.xml</code> file</li>
+
+            <li>Base location (directory) for PropertyList files
+            located somewhere in the filesystem</li>
+
+            <li>Base location (package) for PropertyList files located
+            somewhere on the classpath</li>
+
+            <li>Prefix and suffix conventions for PropertyList file names</li>
+            
+            <li>A list of PropertyList files to load</li>
+          </ul>
+          
+          <hr size="1">
+          <b><a name="section-1.2">1.2 - Habitat4JBootstrap - Bootstrap
+          Parameters</a>&nbsp;[<a href="#top">Top</a>]<br>
+          <br>
+          </b> 
+
+          <p>The following parameters are <b>required</b> by
+          Habitat4JBootstrap:</p>
+
+          <ul>
+            <li><b>applicationName</b> - This is specified as a String
+            value containing the name of the application that will call
+            Habitat4J.</li>
+
+            <li><b>bootstrapPropertyListPath</b> - This is specified as
+            a String value containing the path to a very important
+            configuration file, called the "bootstrap" configuration
+            file. This file is described <u>in this section</u>. The
+            path can be specified as a complete file path (e.g.
+            <code>c:/apps/myapp/properties-bootstrap.xml</code>) or a
+            classpath (e.g.
+            <code>org/productivity/java/myapp/properties-bootstrap.xml</code>).</li>
+          </ul>
+
+          <p>The following parameters are <b>optional</b> for use in Habitat4JBootstrap:</p>
+
+          <ul>
+            <li><b>xsdValidationEnabled</b> - This is specified as a
+            boolean value which determines whether Habitat4J should
+            validate the server-identity and property-list files
+            against the stock Habitat4J XSD files.</li>
+
+            <li><b>log4jEnabled</b> - This is specified as a boolean
+            value which determines whether Habitat4J should use
+            log4j</li>
+
+            <li><b>logLevel</b> - This is specified as a String value
+            containing one of the following log levels: debug, info,
+            warn, error, or fatal mainly used for setting Habitat4J's
+            native logging level (non-log4j).</li>
+
+            <li><b>serverIdentityFilePath</b> - This is specified as a
+            String containing a single path or semicolon-delimited list
+            of paths pointing to the location of a
+            <code>server-identity.xml</code> file. If a
+            semicolon-delimited list is provided, the first location
+            (searching left to right) that contains a
+            <code>server-identity.xml</code> file will be used.</li>
+
+            <li><b>appPropertyListLoaderClassName</b> - This is
+            specified as a String containing the fully qualified class
+            for the customized a custom implementation of
+            ApplicationPropertyListLoaderIF.</li>
+          </ul>
+
+          <hr size="1">
+          <b><a name="section-1.3">1.3 - Habitat4JBootstrap -
+          Bootstrap PropertyList File</a>&nbsp;[<a href="#top">Top</a>]<br>
+          <br>
+          </b> 
+
+          <hr size="1">
+          <b><a name="section-1.4">1.4 - Habitat4JBootstrap -
+            Application PropertyList System Files</a>&nbsp;[<a href="#top">Top</a>]<br>
+          <br>
+          </b> 
+
+          <hr size="1">
+          <b><a name="section-1.5">1.5 - Habitat4JBootstrap -
+            Application PropertyList Classpath Files</a>&nbsp;[<a href="#top">Top</a>]<br>
+          <br>
+          </b> 
+
+          <hr size="1">
+          <b><a name="section-2.0">2.0 - Habitat4JBootstrapServlet
+            - Servlet Configuration</a>&nbsp;[<a href=
+          "#top">Top</a>]<br>
+          <br>
+          </b> 
+
+          <hr size="1">
+          <b><a name="section-2.1">2.1 - Habitat4JBootstrap -
+          Initialization Parameters (init-param)</a>&nbsp;[<a href=
+          "#top">Top</a>]<br>
+          <br>
+          </b> 
+
+          <p></p>
+          
+          <hr size="1">
+          <b><a name="section-3.0">3.0 - Examples - Boostrap Code
+          (Non-Servlet)</a>&nbsp;[<a href="#top">Top</a>]<br>
+          <br>
+          </b> 
+
+          <p><b>NOTE:</b> Only one of the following calls to
+          <code>Habitat4JBootstrap.initialize(..)</code> is
+          required.  Examples start from the simplest and end
+          with the most specific <code>initialize(..)</code>
+          method.</p>
+
+          <p>The following code will initialize Habitat4J using a
+          Bootstrap PropertyList file from the classpath:</p>
+<pre>
+  <b>Habitat4JBootstrap.initialize(
+    "MyApplication",
+    "org/productivity/java/myapp/properties-bootstrap.xml"
+  );</b>
+</pre>
+
+          <p>The following code will initialize Habitat4J using a
+          Bootstrap PropertyList file from the filesystem:</p>
+<pre>
+  Habitat4JBootstrap.initialize(
+    "MyApplication",
+    <b>"c:/apps/myapp/properties-bootstrap.xml"
+  );</b>
+</pre>
+
+          <p>The following code will initialize Habitat4J with XSD
+          validation enabled:</p>
+<pre>
+  Habitat4JBootstrap.initialize(
+    "MyApplication",
+    "org/productivity/java/myapp/properties-bootstrap.xml"<b>,
+    true</b>
+  );
+</pre>
+
+          <p>The following code will initialize Habitat4J with XSD
+          validation enabled and Log4J support enabled:</p>
+<pre>
+  Habitat4JBootstrap.initialize(
+    "MyApplication",
+    "org/productivity/java/myapp/properties-bootstrap.xml",
+    true<b>,
+    true</b>
+  );
+</pre>
+
+          <p>The following code will initialize Habitat4J with XSD
+          validation enabled, Log4J support disabled, and the built-in
+          Habitat4J Logger set to "warn" level:</p>
+<pre>
+  Habitat4JBootstrap.initialize(
+    "MyApplication",
+    "org/productivity/java/myapp/properties-bootstrap.xml",
+    true<b>,
+    false,
+    "warn"</b>
+  );
+</pre>
+
+          <p>The following code will initialize Habitat4J with XSD
+          validation enabled, Log4J support enabled, and the path of
+          the <code>server-identity.xml</code> file explicitly
+          specified:</p>
+<pre>
+  Habitat4JBootstrap.initialize(
+    "MyApplication",
+    "org/productivity/java/myapp/properties-bootstrap.xml",
+    true<b>,
+    false,
+    null,
+    "c:/winnt/server-identity.xml"</b>
+  );
+</pre>
+
+          <p>The following code will initialize Habitat4J with XSD
+          validation enabled, Log4J support enabled, the path of the
+          <code>server-identity.xml</code> file explicitly specified,
+          and a custom ApplicationPropertyListLoaderIF
+          implementation:</p>
+<pre>
+  Habitat4JBootstrap.initialize(
+    "MyApplication",
+    "org/productivity/java/myapp/properties-bootstrap.xml",
+    true,
+    false,
+    null,
+    "c:/winnt/server-identity.xml",
+    <b>MyAppPropertyListLoader.class</b>
+  );
+</pre>
+
+          <p>The following code will initialize Habitat4J with XSD
+          validation enabled, Log4J support enabled, the path of the
+          <code>server-identity.xml</code> file explicitly specified,
+          and a custom ApplicationPropertyListLoaderIF implementation
+          (specified by String):</p>
+<pre>
+  Habitat4JBootstrap.initialize(
+    "MyApplication",
+    "org/productivity/java/myapp/properties-bootstrap.xml",
+    true,
+    false,
+    null,
+    "c:/winnt/server-identity.xml"<b>,
+    "org/productivity/java/myapp/MyAppPropertyListLoader"</b>
+  );
+</pre>
+
+          <hr size="1">
+          <b><a name="section-3.0">3.0 - Examples - Boostrap Code
+          (Non-Servlet)</a>&nbsp;[<a href="#top">Top</a>]<br>
+          <br>
+          </b> 
+
+          <hr size="1">
+          <b><a name="section-3.1">3.1 - Examples - Bootstrap
+            PropertyList</a>&nbsp;[<a href="#top">Top</a>]<br>
+          <br>
+          </b> 
+
+          <hr size="1">
+          <b><a name="section-3.2">3.2 - Examples - Application
+            PropertyList (FileSystem)</a>&nbsp;[<a href="#top">Top</a>]<br>
+          <br>
+          </b> 
+
+          <hr size="1">
+          <b><a name="section-3.3">3.3 - Examples - Application
+            PropertyList (ClassPath)</a>&nbsp;[<a href="#top">Top</a>]<br>
+          <br>
+          </b> 
+
+          <hr size="1">
+          <b><a name="section-3.4">3.4 - Examples - Web Descriptor
+            (web.xml)</a>&nbsp;[<a href="#top">Top</a>]<br>
+          <br>
+          </b> 
+
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

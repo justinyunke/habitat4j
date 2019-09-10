@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+<property-list>
+  <definitions>
+    <property-bean id="commProtocolBean" class="org.productivity.java.habitat4j.junit.examples.propertybean.SampleCommProtocolBean"/>
+    <decoder id="base64" class="org.productivity.java.habitat4j.junit.examples.decoder.SampleBase64EncoderDecoder" alwaysNewInstance="true"/>
+    <decryptor id="caesar" class="org.productivity.java.habitat4j.junit.examples.decryptor.SampleCaesarEncryptorDecryptor"/>
+    <pragma name="pl1">testA</pragma>
+    <pragma name="pl2">testB</pragma>
+    <pragma name="workstationUser">jzsmith</pragma>
+  </definitions>
+	
+  <context>
+    <property name="encoded.1" decoderId="base64">ZW5jb2RlZC52YWx1ZS4x</property>
+    <property name="encrypted.2" decryptorId="caesar">fodszqufe.wbmvf.3</property>
+    <property name="encoded.encrypted.3" decryptorId="caesar" decoderId="base64">ZW6kc3RmZC6mcnNzfXB1ZWQvenFteWUvMx==</property>
+    <property name="encrypted.encoded.4" decoderId="base64" decryptorId="caesar">Zm9kc3pxdWZlLmZvZHBlZmUud2JtdmYuNQ==</property>
+  </context>
+
+  <context>
+    <system-property name="system.encoded.1" decoderId="base64">c3lzdGVtLmVuY29kZWQudmFsdWUuMQ==</system-property>
+    <system-property name="system.encrypted.2" decryptorId="caesar">tztufn.fodszqufe.wbmvf.3</system-property>
+    <system-property name="system.encoded.encrypted.3" decryptorId="caesar" decoderId="base64">d4maeGVuLnVvY30lZWQvZW6kdomxeGVlLoZicHVmLkM=</system-property>
+    <system-property name="system.encrypted.encoded.4" decoderId="base64" decryptorId="caesar">dHp0dWZuLmZvZHN6cXVmZS5mb2RwZWZlLndibXZmLjU=</system-property>
+  </context>
+
+  <context>
+    <security-property name="security.encoded.1" decoderId="base64">c2VjdXJpdHkuZW5jb2RlZC52YWx1ZS4x</security-property>
+    <security-property name="security.encrypted.2" decryptorId="caesar">tfdvsjuz.fodszqufe.wbmvf.3</security-property>
+    <security-property name="security.encoded.encrypted.3" decryptorId="caesar" decoderId="base64">d3VkeXJqeHlvZW6kc3RmZC6mcnNzfXB1ZWQvenFteWUvMx==</security-property>
+    <security-property name="security.encrypted.encoded.4" decoderId="base64" decryptorId="caesar">dGZkdnNqdXouZm9kc3pxdWZlLmZvZHBlZmUud2JtdmYuNQ==</security-property>
+  </context>
+  
+ <context>
+    <property-array name="encoded.encrypted.array.1">
+      <item decoderId="base64">ZW5jb2RlZC52YWx1ZS4xLjE=</item>
+      <item decryptorId="caesar">fodszqufe.wbmvf.2.3</item>
+   	  <item decryptorId="caesar" decoderId="base64">ZW6kc3RmZC6mcnNzfXB1ZWQvenFteWUvMS5a</item>
+	  <item decoderId="base64" decryptorId="caesar">Zm9kc3pxdWZlLmZvZHBlZmUud2JtdmYuMi41</item>
+	</property-array>
+  </context>
+
+ <context>
+    <property-hash name="encoded.encrypted.hash.1">
+      <item key="w" decoderId="base64">ZW5jb2RlZC52YWx1ZS4xLjE=</item>
+      <item key="x" decryptorId="caesar">fodszqufe.wbmvf.2.3</item>
+   	  <item key="y" decryptorId="caesar" decoderId="base64">ZW6kc3RmZC6mcnNzfXB1ZWQvenFteWUvMS5a</item>
+	  <item key="z" decoderId="base64" decryptorId="caesar">Zm9kc3pxdWZlLmZvZHBlZmUud2JtdmYuMi41</item>
+	</property-hash>
+  </context>
+  
+  <context>
+    <property-bean name="ldap.server.local" id="commProtocolBean">
+      <host decoderId="base64">MTI3LjAuMC4x</host>
+      <port decryptorId="caesar">490</port>
+      <service decryptorId="caesar" decoderId="base64">cGRidA==</service>
+      <description decoderId="base64" decryptorId="caesar">TERBUCAoRGpzZmR1cHN6KSBTZnN3ZnM=</description>
+    </property-bean>
+  </context>
+
+  <context>
+    <property-bean-array name="internal.smtp.servers" id="commProtocolBean">
+      <item>
+        <host decoderId="base64">MTAuMC4wLjE=</host>
+        <port decryptorId="caesar">36</port>
+        <service decryptorId="caesar" decoderId="base64">d321dA==</service>
+        <description decoderId="base64" decryptorId="caesar">U01UUCAoTWJqbSkgU2Zzd2Zz</description>
+      </item>
+      <item>
+        <host decoderId="base64">MTAuMC4wLjI=</host>
+        <port decryptorId="caesar">576</port>
+        <service decryptorId="caesar" decoderId="base64">d321dHM=</service>
+        <description decoderId="base64" decryptorId="caesar">U01UUFMgKE1iam0pIFNmc3dmcw==</description>
+      </item>
+    </property-bean-array>
+  </context>
+
+  <context>
+    <property-bean-hash name="internal.smtp.servers.hash" id="commProtocolBean">
+      <item key="a">
+        <host decoderId="base64">MTAuMC4wLjE=</host>
+        <port decryptorId="caesar">36</port>
+        <service decryptorId="caesar" decoderId="base64">d321dA==</service>
+        <description decoderId="base64" decryptorId="caesar">U01UUCAoTWJqbSkgU2Zzd2Zz</description>
+      </item>
+      <item key="b">
+        <host decoderId="base64">MTAuMC4wLjI=</host>
+        <port decryptorId="caesar">576</port>
+        <service decryptorId="caesar" decoderId="base64">d321dHM=</service>
+        <description decoderId="base64" decryptorId="caesar">U01UUFMgKE1iam0pIFNmc3dmcw==</description>
+      </item>
+    </property-bean-hash>
+  </context>
+  
+  <context workstationUser="jzsmith">
+  	<property name="user">John Z Smith</property>
+  </context>
+ 
+  <context pl1="testA">
+  	<property name="prop1">testA</property>
+  </context>
+
+  <context pl1="testX">
+  	<property name="prop1">testX</property>
+  </context>
+
+  <context pl2="testB">
+  	<property name="prop2">testB</property>
+  </context>
+
+  <context pl2="testX">
+  	<property name="prop2">testX</property>
+  </context>
+
+  <context pl3="testX">
+  	<property name="prop3">testX</property>
+  </context>
+  
+  <context workstationUser="*">
+  	<property name="prop4">testC</property>
+  </context>
+
+  <context workstationUser="!jzsmith">
+  	<property name="prop5">testX</property>
+  </context>
+
+  <context workstationUser="!jxsmith">
+  	<property name="prop6">testD</property>
+  </context>
+
+  <context environment="!Dev">
+  	<property name="prop7">testX</property>
+  </context>
+
+  <context environment="!NotDev">
+  	<property name="prop8">testE</property>
+  </context>
+</property-list>

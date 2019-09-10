@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<property-list>
+	<context>
+		<property name="name.noprefix.1">value.1</property>
+		<property name="name.noprefix.1.1">value.1.1</property>
+		<property name="name.noprefix.1.2">value.1.2</property>
+	</context>
+	<context prefix="onelevel.">
+		<property name="name.prefix.2">value.2</property>
+		<property name="name.prefix.2.1">value.2.1</property>
+		<property name="name.prefix.2.2">value.2.2</property>
+	</context>
+	<context prefix="two.levels.">
+		<property name="name.prefix.3">value.3</property>
+		<property name="name.prefix.3.1">value.3.1</property>
+		<property name="name.prefix.3.2">value.3.2</property>
+	</context>
+	<context>
+		<property name="name.noprefix.4">value.4</property>
+		<property name="name.noprefix.4.1">value.4.1</property>
+		<property name="name.noprefix.4.2">value.4.2</property>
+	</context>
+
+	<context>
+		<property name="name.noprefix.5">value.5</property>
+		
+		<property-array name="name.noprefix.5.1">
+			<item>OneX</item>
+			<item>TwoX</item>
+			<item>ThreeX</item>
+		</property-array>
+	</context>
+	<context prefix="onelevel.">
+		<property name="name.prefix.6">value.6</property>
+		
+		<property-array name="name.prefix.6.1">
+			<item/>
+		</property-array>
+	</context>
+
+	<context>
+		<property-array name="name.noprefix.5.1" instance="replace">
+			<item>One</item>
+			<item>Two</item>
+		</property-array>
+	</context>
+	<context prefix="onelevel.">
+		<property-array name="name.prefix.6.1" instance="prepend">
+			<item>One</item>
+		</property-array>
+	</context>
+	<context prefix="onelevel.">
+		<property-array name="name.prefix.6.1" instance="append">
+			<item>Three</item>
+		</property-array>
+	</context>
+
+	<context>
+		<property-hash name="name.noprefix.7.1">
+			<item key="a">OneX</item>
+			<item key="b">TwoX</item>
+			<item key="c">ThreeX</item>
+		</property-hash>
+	</context>
+	<context prefix="onelevel.">
+		<property-hash name="name.prefix.8.1">
+			<item key="a">One</item>
+			<item key="b">Two</item>
+		</property-hash>
+	</context>
+
+	<context>
+		<property-hash name="name.noprefix.7.1" instance="replace">
+			<item key="a">One</item>
+			<item key="b">Two</item>
+		</property-hash>
+	</context>
+	<context prefix="onelevel.">
+		<property-hash name="name.prefix.8.1" instance="revise">
+			<item key="b"/>
+			<item key="c">Three</item>
+		</property-hash>
+	</context>
+	
+	<context>
+		<property name="name.noprefix.9">value.9</property>
+
+		<system-property name="name.noprefix.9.1">value.9.1</system-property>
+	</context>	
+	<context prefix="onelevel.">
+		<property name="name.prefix.9">value.9</property>
+
+		<system-property name="name.prefix.9.2">value.9.2</system-property>
+	</context>	
+
+	<context>
+		<property name="name.noprefix.10">value.10</property>
+
+		<security-property name="name.noprefix.10.1">value.10.1</security-property>
+	</context>	
+	<context prefix="onelevel.">
+		<property name="name.prefix.10">value.10</property>
+
+		<security-property name="name.prefix.10.2">value.10.2</security-property>
+	</context>	
+</property-list>

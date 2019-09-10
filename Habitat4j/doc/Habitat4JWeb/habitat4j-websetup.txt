@@ -1,0 +1,114 @@
+--------------------------------------------------------------------------
+Document: Habitat4jWebSetup.txt
+Version:  $Id: habitat4j-websetup.txt,v 1.2 2005/03/26 06:57:01 cvs Exp $
+Author:   Justin Yunke <habitat4j@productivity.org>
+URL:      http://www.productivity.org/projects/habitat4j/
+--------------------------------------------------------------------------
+Step 1 --
+
+  Add habitat4j-x.y.z.jar and habitat4jweb-x.y.z.jar to your Web
+  Project (WAR) in the WEB-INF/lib directory.
+  
+Step 2 --
+
+  Add this entry to your WEB-INF/web.xml Web Deployment Descriptor file
+  in the <web-app> section (as appropriate).
+
+	<servlet>
+		<servlet-name>Habitat4JBootstrapServlet</servlet-name>
+		<display-name>Habitat4J - Bootstrap Servlet</display-name>
+		<description>This servlet serves the purposes of preparing Habitat4J for use within this web application.</description>
+		<servlet-class>org.productivity.java.habitat4j.web.servlet.Habitat4JBootstrapServlet</servlet-class>		
+		<init-param>
+			<param-name>applicationName</param-name>
+			<param-value>Habitat4JExampleWeb</param-value>
+		</init-param>
+		<init-param>
+			<param-name>bootstrapPropertiesPath</param-name>
+			<param-value>__YOUR_APP'S_PROPERTY_CLASSPATH_HERE__/properties-bootstrap.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>xsdValidationEnabled</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>log4jEnabled</param-name>
+			<param-value>false</param-value>
+		</init-param>
+		<init-param>
+			<param-name>logLevel</param-name>
+			<param-value>info</param-value>
+		</init-param>
+		<init-param>
+			<param-name>serverIdentityFilePath</param-name>
+			<param-value>d:/server-identity.xml;c:/server-identity.xml</param-value>
+		</init-param>
+		<!--init-param>
+			<param-name>serverIdentityFilePath</param-name>
+			<param-value>d:/server-identity.xml;c:/server-identity.xml</param-value>
+		</init-param-->
+		<!--init-param>
+			<param-name>applicationPropertyListLoaderClass</param-name>
+			<param-value>org.productivity.java.habitat4j.common.ApplicationPropertyListLoader</param-value>
+		</init-param-->
+		<load-on-startup>0</load-on-startup>
+	</servlet>
+
+Step 3 --
+
+  Create a properties-bootstrap.xml (a sample one is provided along
+  side this Habitat4JWebSetup.txt file) and place it in your classpath.
+  For instance, you might use something like:
+  
+    org/productivity/java/myapp/properties-bootstrap.xml
+
+  Modify the __YOUR_APP'S_PROPERTY_CLASSPATH_HERE__ entry to match
+  the package in which you chose for the bootstrap file above, i.e.:
+  
+    org/productivity/java/myapp
+
+  Modify the __YOUR_APP'S_PROPERTY_FILEPATH_HERE__ entry. i.e.:
+  
+    c:/apps/myapp
+
+Step 4 --
+
+  Tweak the <init-param> values in the above web.xml for your
+  application.  Be sure to set the correct location for the
+  server-identity.xml file, and also replace:
+  
+     __YOUR_APP'S_PROPERTY_CLASSPATH_HERE__/properties-bootstrap.xml
+  
+  ...to match the location you used in Step 3.
+  
+Step 5 -- 
+
+  Create a properties-example1.xml and place it in the same location as
+  you used for the FILEPATH in Step 3.  It needs to contain
+  (at minimum):
+  
+    <property-list/>
+
+Step 6 -- 
+
+  Create a properties-example2.xml and place it in the same location as
+  you used for the CLASSPATH in Step 3.  It needs to contain
+  (at minimum):
+  
+    <property-list/>
+
+Step 7 --
+
+  Create a server-identity.xml file and place it in the same location as
+  you tweaked in Step 4.  It needs to contain (at minimum):
+  
+    <server-identity/>
+
+Step 8 --
+
+  Run your web application.
+ 
+--------------------------------------------------------------------------
+End of Habitat4JWebSetup.txt
+--------------------------------------------------------------------------
+jpy

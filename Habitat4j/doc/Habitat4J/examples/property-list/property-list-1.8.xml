@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<property-list>
+  <context>
+    <system-property name="system.property.1">system.property.value.1</system-property>
+    <security-property name="security.property.1">security.property.value.1</security-property>
+  </context>
+</property-list>

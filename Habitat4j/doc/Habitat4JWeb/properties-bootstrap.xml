@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<property-list>
+	<definitions>
+		<property-bean id="aplrl" class="org.productivity.java.habitat4j.common.ApplicationPropertyListResourceLocation"/>
+		<property-bean id="aplrc" class="org.productivity.java.habitat4j.common.ApplicationPropertyListReloadConfiguration"/>
+	</definitions>
+
+	<context>
+		<property-array name="fileSystemPropertyListReloadPropertyLists">
+			<item>PropertyListToLoad</item>
+		</property-array>
+
+		<property-bean name="fileSystemPropertyListReloadConfiguration" id="aplrc">
+			<enabled>true</enabled>
+			<on-the-fly>false</on-the-fly>
+			<interval>5</interval>
+		</property-bean>
+	</context>
+	
+	<context>
+		<property-bean name="fileSystemPropertyListResourceLocation" id="aplrl">
+			<base-path>__YOUR_APP'S_PROPERTY_FILEPATH_HERE__</base-path>
+		</property-bean>
+		
+		<property-bean name="classPathPropertyListResourceLocation" id="aplrl">
+			<base-path>__YOUR_APP'S_PROPERTY_CLASSPATH_HERE__</base-path>
+		</property-bean>
+	</context>
+	
+	<context>
+		<property-array name="fileSystemPropertyListResources">
+			<item>example1</item>
+			<!-- add addition item elements here as needed -->
+		</property-array>
+
+		<property-array name="classPathPropertyListResources">
+			<item>example2</item>
+			<!-- add addition item elements here as needed -->
+		</property-array>
+	</context>
+
+</property-list>

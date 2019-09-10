@@ -1,0 +1,16 @@
+org.productivity.java.habitat4j
+org.productivity.java.habitat4j.common
+org.productivity.java.habitat4j.common.exception
+org.productivity.java.habitat4j.common.interfaces
+org.productivity.java.habitat4j.common.sax
+org.productivity.java.habitat4j.compat
+org.productivity.java.habitat4j.compat.common
+org.productivity.java.habitat4j.junit
+org.productivity.java.habitat4j.junit.examples.decoder
+org.productivity.java.habitat4j.junit.examples.decryptor
+org.productivity.java.habitat4j.junit.examples.propertybean
+org.productivity.java.habitat4j.junit.examples.reload
+org.productivity.java.habitat4j.junit.examples.resource.Habitat4JTestSuite.apps.ApplicationC
+org.productivity.java.habitat4j.junit.threads
+org.productivity.java.habitat4j.util
+org.productivity.java.habitat4j.web.servlet

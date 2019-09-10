@@ -1,0 +1,293 @@
+<?xml version="1.0"?>
+<property-list version="1.0a" modifiedBy="jpy" reloadSerial="2004071801">
+  <definitions>
+    <property-bean id="commProtocolBean" class="org.productivity.java.habitat4j.junit.examples.propertybean.SampleCommProtocolBean" copyMethod="serialize"/>
+    <property-bean id="ept" class="org.productivity.java.habitat4j.junit.examples.propertybean.EveryParameterTypeBean"/>
+  </definitions>
+	
+  <context>
+  	<property name="int.value.-1">-1</property>
+  	<property name="int.value.0">0</property>
+  	<property name="int.value.1">1</property>
+
+  	<property name="int.value.re.1"/>
+  	<property name="int.value.re.2">A</property>
+
+  	<property name="boolean.value.true">true</property>
+  	<property name="boolean.value.on">on</property>
+  	<property name="boolean.value.yes">yes</property>
+  	<property name="boolean.value.1">1</property>
+
+  	<property name="boolean.value.false">false</property>
+  	<property name="boolean.value.off">off</property>
+  	<property name="boolean.value.no">no</property>
+  	<property name="boolean.value.0">0</property>
+
+  	<property name="boolean.value.re.1">X</property><!-- needed to test propertyList.remove in PLH -->
+  	<property name="boolean.value.re.1"></property>
+  	<property name="boolean.value.re.2">A</property>
+  
+    <property-bean name="ldap.server.local" id="commProtocolBean">
+      <host>127.0.0.1</host>
+      <port>389</port>
+      <service>ldap</service>
+    </property-bean>
+
+    <property-bean name="http.server.remote" id="commProtocolBean">
+      <host>10.0.0.1</host>
+      <port>80</port>
+      <service>http</service>
+    </property-bean>
+  </context>
+	
+  <context prefix="secure.">
+    <property-bean name="ldap.server.local" id="commProtocolBean">
+      <host>127.0.0.1</host>
+      <port>646</port>
+      <service>ldaps</service>
+    </property-bean>
+
+    <property-bean name="http.server.remote" id="commProtocolBean">
+      <host>10.0.0.1</host>
+      <port>443</port>
+      <service>https</service>
+    </property-bean>		
+  </context>
+
+  <context>
+    <property-bean name="imap.server.local" id="commProtocolBean">
+      <host>10.0.0.1</host>
+      <port>143</port>
+      <service>imap</service>
+    </property-bean>
+
+    <property-bean name="imap.server.local" id="commProtocolBean" instance="replace">
+      <host>10.0.0.2</host>
+      <!-- port>993</port purposely removed to ensure "new" bean object -->
+      <service>imaps</service>
+    </property-bean>
+  </context>
+
+  <context>
+    <property-bean name="imap.server.remote" id="commProtocolBean">
+      <host>10.1.0.1</host>
+      <port>143</port>
+      <service>imap</service>
+    </property-bean>
+
+    <property-bean name="imap.server.remote" id="commProtocolBean" instance="revise">
+      <host>10.1.0.2</host>
+    </property-bean>
+  </context>
+  
+  <context>
+    <property-bean-array name="internal.smtp.servers" id="commProtocolBean">
+      <item>
+        <host>10.0.0.1</host>
+        <port>25</port>
+        <service>smtp</service>
+      </item>
+      <item>
+        <host>10.0.0.2</host>
+        <port>25</port>
+        <service>smtp</service>
+      </item>
+    </property-bean-array>
+
+    <property-bean-array name="external.smtp.servers" id="commProtocolBean">
+      <item>
+        <host>10.1.0.1</host>
+        <port>25</port>
+        <service>smtp</service>
+      </item>
+      <item>
+        <host>10.1.0.2</host>
+        <port>25</port>
+        <service>smtp</service>
+      </item>
+    </property-bean-array>
+  </context>
+
+  <context prefix="secure.">
+    <property-bean-array name="internal.smtp.servers" id="commProtocolBean">
+      <item>
+        <host>10.2.0.1</host>
+        <port>465</port>
+        <service>smtps</service>
+      </item>
+      <item>
+        <host>10.2.0.2</host>
+        <port>465</port>
+        <service>smtps</service>
+      </item>
+    </property-bean-array>
+
+    <property-bean-array name="external.smtp.servers" id="commProtocolBean">
+      <item>
+        <host>10.3.0.1</host>
+        <port>465</port>
+        <service>smtps</service>
+      </item>
+      <item>
+        <host>10.3.0.2</host>
+        <port>465</port>
+        <service>smtps</service>
+      </item>
+    </property-bean-array>
+  </context>
+
+  <context>
+    <property-bean-array name="internal.imap.servers" id="commProtocolBean">
+      <item>
+        <host>10.4.0.1</host>
+        <port>143</port>
+        <service>imap</service>
+      </item>
+    </property-bean-array>
+
+    <property-bean-array name="internal.imap.servers" id="commProtocolBean" instance="replace">
+      <item>
+        <host>10.4.0.2</host>
+        <port>993</port>
+        <service>imaps</service>
+      </item>
+    </property-bean-array>
+  </context>  
+  
+  <context>
+    <property-bean-array name="external.imap.servers" id="commProtocolBean">
+    </property-bean-array>
+    
+    <property-bean-array name="external.imap.servers" id="commProtocolBean" instance="prepend">
+      <item>
+        <host>10.5.0.1</host>
+        <port>143</port>
+        <service>imap</service>
+      </item>
+    </property-bean-array>
+
+    <property-bean-array name="external.imap.servers" id="commProtocolBean" instance="append">
+      <item>
+        <host>10.5.0.2</host>
+        <port>993</port>
+        <service>imaps</service>
+      </item>
+    </property-bean-array>
+  </context>  
+  
+  <context>
+    <property-bean-hash name="external.imap.servers.hash.1" id="commProtocolBean">
+      <item key="a">
+        <host>10.6.0.1X</host>
+        <port>143</port>
+        <service>imap</service>
+      </item>
+     <item key="b">
+        <host>10.7.0.2X</host>
+        <port>993</port>
+        <service>imaps</service>
+      </item>
+      <item key="c">
+        <host>10.8.0.2X</host>
+        <port>993</port>
+        <service>imaps</service>
+      </item>
+    </property-bean-hash>
+
+    <property-bean-hash name="external.imap.servers.hash.2" id="commProtocolBean">
+      <item key="c">
+        <host>10.8.0.2X</host>
+        <port>143</port>
+        <service>imap</service>
+      </item>
+    </property-bean-hash>
+  </context>
+  
+  <context> 
+    <property-bean-hash name="external.imap.servers.hash.1" id="commProtocolBean" instance="replace">
+      <item key="a">
+        <host>10.6.0.1</host>
+        <port>143</port>
+        <service>imap</service>
+      </item>
+     <item key="b">
+        <host>10.7.0.2</host>
+        <port>993</port>
+        <service>imaps</service>
+      </item>
+    </property-bean-hash>
+ 
+    <property-bean-hash name="external.imap.servers.hash.2" id="commProtocolBean" instance="revise">
+      <item key="c">
+        <host>10.8.0.2</host>
+      </item>
+      <item key="d">
+        <host>10.9.0.2</host>
+        <port>993</port>
+        <service>imaps</service>
+      </item>
+    </property-bean-hash>
+  </context>  
+  
+  <context>
+    <property-bean name="every.parameter.1" id="ept">
+      <shortValue>1</shortValue>
+      <intValue>2</intValue>
+      <longValue>3</longValue>
+      <doubleValue>4.01</doubleValue>
+      <floatValue>5</floatValue>
+      <charValue>a</charValue>
+      <booleanValue>true</booleanValue>
+      <shortObjectValue>6</shortObjectValue>
+      <intObjectValue>7</intObjectValue>
+      <bigIntegerObjectValue>8</bigIntegerObjectValue>
+      <longObjectValue>9</longObjectValue>
+      <doubleObjectValue>10.01</doubleObjectValue>
+      <floatObjectValue>11</floatObjectValue>
+      <bigDecimalObjectValue>12.01</bigDecimalObjectValue>
+      <charObjectValue>b</charObjectValue>
+      <booleanObjectValue>true</booleanObjectValue>
+      <stringValue>abc</stringValue>
+    </property-bean>
+
+    <property-bean name="every.parameter.2" id="ept">
+      <shortValue>-1</shortValue>
+      <intValue>-2</intValue>
+      <longValue>-3</longValue>
+      <doubleValue>-4.01</doubleValue>
+      <floatValue>-5</floatValue>
+      <charValue>c</charValue>
+      <booleanValue>false</booleanValue>
+      <shortObjectValue>-6</shortObjectValue>
+      <intObjectValue>-7</intObjectValue>
+      <bigIntegerObjectValue>-8</bigIntegerObjectValue>
+      <longObjectValue>-9</longObjectValue>
+      <doubleObjectValue>-10.01</doubleObjectValue>
+      <floatObjectValue>-11</floatObjectValue>
+      <bigDecimalObjectValue>-12.01</bigDecimalObjectValue>
+      <charObjectValue>d</charObjectValue>
+      <booleanObjectValue>false</booleanObjectValue>
+      <stringValue>cba</stringValue>
+    </property-bean>
+
+    <property-bean name="every.parameter.null" id="ept">
+      <shortValue></shortValue>
+      <intValue></intValue>
+      <longValue></longValue>
+      <doubleValue></doubleValue>
+      <floatValue></floatValue>
+      <charValue></charValue>
+      <booleanValue></booleanValue>
+      <shortObjectValue></shortObjectValue>
+      <bigIntegerObjectValue></bigIntegerObjectValue>
+      <longObjectValue></longObjectValue>
+      <doubleObjectValue></doubleObjectValue>
+      <floatObjectValue></floatObjectValue>
+      <bigDecimalObjectValue></bigDecimalObjectValue>
+      <charObjectValue></charObjectValue>
+      <booleanObjectValue></booleanObjectValue>
+      <stringValue></stringValue>
+    </property-bean>
+  </context>
+
+</property-list>

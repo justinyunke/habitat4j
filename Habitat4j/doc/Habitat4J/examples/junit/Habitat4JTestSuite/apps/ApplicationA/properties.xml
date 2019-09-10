@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<property-list>
+	<!-- $Id: properties.xml,v 1.2 2005/09/03 22:48:19 cvs Exp $ -->
+	<context>
+		<property name="name.noprefix.1">value.1</property>
+		<property name="name.noprefix.1.1">value.1.1</property>
+		<property name="name.noprefix.1.2">value.1.2</property>
+	</context>
+	<context prefix="onelevel.">
+		<property name="name.prefix.2">value.2</property>
+		<property name="name.prefix.2.1">value.2.1</property>
+		<property name="name.prefix.2.2">value.2.2</property>
+	</context>
+	<context prefix="two.levels.">
+		<property name="name.prefix.3">value.3</property>
+		<property name="name.prefix.3.1">value.3.1</property>
+		<property name="name.prefix.3.2">value.3.2</property>
+	</context>
+	<context>
+		<property name="name.noprefix.4">value.4</property>
+		<property name="name.noprefix.4.1">value.4.1</property>
+		<property name="name.noprefix.4.2">value.4.2</property>
+	</context>
+
+	<context>
+		<property name="name.noprefix.5">value.5</property>
+		
+		<property-array name="name.noprefix.5.1">
+			<item>One</item>
+			<item>Two</item>
+		</property-array>
+	</context>
+	<context prefix="onelevel.">
+		<property name="name.prefix.6">value.6</property>
+		
+		<property-array name="name.prefix.6.1">
+			<item>One</item>
+			<item/>
+			<item>Three</item>
+		</property-array>
+	</context>
+	
+	<context>
+		<property name="name.noprefix.7">value.7</property>
+
+		<system-property name="name.noprefix.7.1">value.7.1</system-property>
+	</context>	
+	<context prefix="onelevel.">
+		<property name="name.prefix.7">value.7</property>
+
+		<system-property name="name.prefix.7.2">value.7.2</system-property>
+	</context>	
+
+	<context>
+		<property name="name.noprefix.8">value.8</property>
+
+		<security-property name="name.noprefix.8.1">value.8.1</security-property>
+	</context>	
+	<context prefix="onelevel.">
+		<property name="name.prefix.8">value.8</property>
+
+		<security-property name="name.prefix.8.2">value.8.2</security-property>
+	</context>	
+</property-list>
