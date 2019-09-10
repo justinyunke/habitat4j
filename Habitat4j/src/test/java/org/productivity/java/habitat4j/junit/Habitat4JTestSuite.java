@@ -43,7 +43,10 @@ public class Habitat4JTestSuite extends TestSuite {
 		TestSuite suite = new TestSuite("Habitat4J JUnit Test Suite");
 				
 		suite.addTest(Habitat4JApplicationsABCTestSuite.suite());
-		suite.addTest(Habitat4JApplicationsDETestSuite.suite());
+		
+		// This one requires some local file switches; removed from Maven process
+//		suite.addTest(Habitat4JApplicationsDETestSuite.suite());
+		
 		suite.addTest(Habitat4JApplicationFTestSuite.suite());
 		
 		// This one requires some local file switches; removed from Maven process
