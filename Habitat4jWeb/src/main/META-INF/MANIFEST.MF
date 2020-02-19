@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.7.1
+Created-By: 1.5.0_15-b04 (Sun Microsystems Inc.)
+Package: org.productivity.java.habitat4j.crypto
+Specification-Title: Habitat4J Crypto
+Specification-Version: 1.0.0rc19 2008-11-24 09:18:45 jpy
+Specification-Version-Detail: 1.0.0 Release Candidate 19
+Specification-Vendor: Productivity.ORG
+Specification-Vendor-Id: http://productivity.org/projects/habitat4j/
+
