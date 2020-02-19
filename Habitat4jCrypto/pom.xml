@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.productivity.java.habitat4j</groupId>
 	<artifactId>habitat4j</artifactId>
-	<version>0.9.2</version>
+	<version>1.0.0</version>
 	<build>
 		<sourceDirectory>src/main/java</sourceDirectory>
 		<resources>
